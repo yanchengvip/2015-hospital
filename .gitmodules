@@ -1,0 +1,3 @@
+[submodule "packages/pinyin"]
+	path = packages/pinyin
+	url = git@fitark.org:atmosphere/pinyin.git

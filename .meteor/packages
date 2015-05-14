@@ -5,8 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 less
+mquandalle:jade
+coffeescript
 iron:router
 twbs:bootstrap
 fortawesome:fontawesome
@@ -14,10 +15,17 @@ zimme:iron-router-active
 jquery
 okgrow:iron-router-autoscroll
 
-
-mquandalle:jade
-coffeescript
 alanning:roles
+aldeed:autoform
 aldeed:collection2
 aldeed:simple-schema
+yogiben:autoform-file
+rajit:bootstrap3-datepicker
+aldeed:autoform-bs-datepicker
+
+cfs:standard-packages
+cfs:gridfs
+
 msavin:mongol
+
+fitark:pinyin
