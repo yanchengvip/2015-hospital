@@ -114,6 +114,11 @@
 ![](https://github.com/wmzhai/advanced-git-topic/raw/master/images/git-flow-release-finish-0.1.0.png)
 
 
+### 3.3 上传版本号tag
+
+    $ git push origin v0.0.1
+
+
 ## 4. Hotfix分支（仅管理员可以push master）
 
 
