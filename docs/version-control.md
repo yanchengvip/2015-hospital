@@ -9,7 +9,7 @@
 ## 1. Clone初始化代码
 
 ### 递归clone代码
-	$ git clone --recursive git@fitark.org:meteor/laniakea.git
+	$ git clone --recursive git@fitark.org:Laniakea/webus.git
 
 完事以后可以通过`git branch`查看，你在`master`分支里
 	
