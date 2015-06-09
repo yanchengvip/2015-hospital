@@ -1,3 +1,0 @@
-Patients.allow
-  insert:->
-    true

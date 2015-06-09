@@ -26,12 +26,16 @@
                     </div>
                 </li>
                 <li class="{{isActiveRoute regex='patients'}}">
-                    <a href="{{pathFor route='patients'}}"><i class="fa fa-diamond"></i> <span
+                    <a href="{{pathFor route=''}}"><i class="fa fa-diamond"></i> <span
                             class="nav-label">患者列表</span> </a>
                 </li>
-                <li class="{{isActiveRoute regex='pageTwo'}}">
-                    <a href="{{pathFor route='pageTwo'}}"><i class="fa fa-diamond"></i> <span
-                            class="nav-label">Page two</span> </a>
+                <li class="{{isActiveRoute regex=''}}">
+                    <a href="{{pathFor route='patients'}}"><i class="fa fa-diamond"></i> <span
+                            class="nav-label">医院管理</span> </a>
+                </li>
+                <li class="{{isActiveRoute regex=''}}">
+                    <a href="{{pathFor route='patients'}}"><i class="fa fa-diamond"></i> <span
+                            class="nav-label">worklist</span> </a>
                 </li>
             </ul>
 
