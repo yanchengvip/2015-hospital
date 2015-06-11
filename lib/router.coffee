@@ -5,5 +5,7 @@ Router.configure
 #
 # Example pages routes
 #
+Router.route '/',
+  name:'homepageMain'
 
 Router.route('/hospitals')
