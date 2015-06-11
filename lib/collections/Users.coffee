@@ -1,8 +1,12 @@
 # Schemas for Meteor.users collection
 # Roles: admin | doctor | patient
 #Users.allow
-#  insert:(_id)
+#  insert:true
 
+Meteor.methods
+  userInsert:(userAttributes)->
+
+    Meteor.users.insert userAttributes
 
 
 Schema = {}
@@ -44,7 +48,7 @@ Schema.User = new SimpleSchema(
     type: String
     regEx: /^[a-z0-9A-Z_@.]{1,15}$/
     label: "用户名"
-    defaultValue: "doc2"
+#    defaultValue: @field("mobile").value
   name:
     type: String
     label: "真实姓名"
