@@ -1,5 +1,9 @@
 # Schemas for Meteor.users collection
 # Roles: admin | doctor | patient
+#Users.allow
+#  insert:(_id)
+
+
 
 Schema = {}
 
@@ -8,68 +12,12 @@ Schema.AdminProfile = new SimpleSchema()
 
 # -----------------------   医生 profile  -----------------------------
 Schema.DoctorProfile = new SimpleSchema(
-
-  name:
+  hospital:
     type: String
-    label: "医生姓名"
-
-  gender:
+    label:"所在医院"
+  department:
     type: String
-    label: "医生性别"
-
-  mobile:
-    type: Number
-    label: "医生手机号码"
-
-  cardNo:
-    type: Number
-    label: "医生卡号"
-
-  joinedAt:
-    type: Date
-    label: "医生入会时间"
-
-  picture:
-    type:  String
-    label: "医生头像"
-    regEx: SimpleSchema.RegEx.Url
-    optional: true
-    autoform:
-      omit: true
-
-  alertCheckTime:
-    type: Date
-    label: "上一次查看 alert 时间"
-    optional: true
-    autoform:
-      omit: true
-#autoValue: ->
-#if @isInsert
-#new Date
-
-  messageCheckTime:
-    type: Date
-    label: "上一次查看 message 时间"
-    optional: true
-    autoform:
-      omit: true
-#autoValue: ->
-#if @isInsert
-#new Date
-
-  patientList:
-    type: [ String ]
-    label: "客户名单"
-    optional: true
-    autoform:
-      omit: true
-
-  patientVipList:
-    type: [ String ]
-    label: "Vip 客户名单"
-    optional: true
-    autoform:
-      omit: true
+    label: "所在科室"
 )
 
 #---------------  用户上传头像 -----------------
@@ -79,59 +27,14 @@ Schema.DoctorProfile = new SimpleSchema(
 
 # -----------------------   病人 profile  -----------------------------
 Schema.PatientProfile = new SimpleSchema(
+  diseases_type:
+    type:String
+    label:"患病类型"
 
-  name:
-    type: String
-    label: "姓名"
-  age:
-    type: Number
-    label: "年龄"
-    optional: true
-  gender:
-    type: String
-    label: "性别"
-    optional: true
-    autoform:
-      type: 'select-radio-inline'
-      options: ->
-        男: '男',
-        女: '女'
-      noselect: true
+  last_t:
+    type:String
+    label:"上次治疗时间"
 
-  mobile:
-    type: String
-    label: "手机"
-    regEx: /1[0-9]{10}/
-
-  cardNo:
-    type: String
-    label: "健康卡号"
-    regEx :/\d+/
-
-  joinedAt:
-    type: Date
-    label: "病人入会时间"
-
-  doctorId:
-    type: [ String ]
-    label: "责任医生"
-    minCount: 1
-
-  picture:
-    type: String
-    label: "病人头像"
-#    regEx: SimpleSchema.RegEx.Url
-    optional: true
-
-  mainIssue:
-    type: String
-    label: "健康描述"
-    optional: true
-#    min: 20,
-    max: 1000,
-    autoform: {
-      rows: 6
-    }
 )
 
 
@@ -141,13 +44,27 @@ Schema.User = new SimpleSchema(
     type: String
     regEx: /^[a-z0-9A-Z_@.]{1,15}$/
     label: "用户名"
-#    defaultValue: "doc2"
-
+    defaultValue: "doc2"
+  name:
+    type: String
+    label: "真实姓名"
+  mobile:
+    type: Number
+    label:'手机'
+  age:
+    type: Date
+    label: '出生日期'
+  hospital:
+    type: String
+    label:'医院'
+  department:
+    type: String
+    label:'科室'
   password:
     type: String
     label: "密码"
     optional: true
-#    defaultValue: "123123"
+    defaultValue: "123123"
 
   confirmPassword:
     type: String
@@ -156,7 +73,7 @@ Schema.User = new SimpleSchema(
     custom: ->
       if @value isnt @field("password").value
         "密码不一致"
-#    defaultValue: "123123"
+    defaultValue: "123123"
 
   emails:
     type: [Object]
@@ -184,10 +101,6 @@ Schema.User = new SimpleSchema(
     autoform:
       omit: true
 
-  services:
-    type: Object
-    optional: true
-    blackbox: true
 
 # 身份：admin | doctor | patient, can ONLY be one
   roles:

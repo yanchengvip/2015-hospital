@@ -1,0 +1,24 @@
+<template name="homepageMain">
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="row m-t-lg" name="patientList">
+
+            {{#each patientList}}
+
+                <div class="col-lg-4">
+                    <div class="contact-box" name="patientCard">
+                        {{> homepagePatientCard}}
+                    </div>
+                </div>
+            {{/each}}
+            <div class="col-lg-4">
+                <a id="addPatientDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addPatientModal">
+                    <i class="fa fa-plus fa-3x"></i>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    {{>homepagePatientForm}}
+
+</template>
