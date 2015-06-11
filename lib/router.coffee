@@ -8,4 +8,8 @@ Router.configure
 Router.route '/',
   name:'homepageMain'
 
+Router.route "/showPatients",
+  action: ->
+    Router.go "/"
+
 Router.route('/hospitals')
