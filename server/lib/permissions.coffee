@@ -1,4 +1,3 @@
-#Patients.allow
-#  insert:->
-#    if Meteor.user()
-#      true
+Hospitals.allow
+  insert:->
+      true

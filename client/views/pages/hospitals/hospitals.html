@@ -1,0 +1,16 @@
+<template name="hospitals">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row  m-t-lg">
+    {{#each hospital}}
+        {{> hospitalItem }}
+    {{/each}}
+            <div class="col-lg-4">
+                <a id="addHospitalDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addHospitalModal">
+                    <i class="fa fa-plus fa-3x"></i>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    {{>addHospital action='insert' buttonContent='添加' title="添加医院"}}
+</template>

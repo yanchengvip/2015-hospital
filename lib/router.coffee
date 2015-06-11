@@ -6,3 +6,4 @@ Router.configure
 # Example pages routes
 #
 
+Router.route('/hospitals')

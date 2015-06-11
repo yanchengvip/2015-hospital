@@ -1,0 +1,32 @@
+<template name="hospitalItem">
+    <div class="col-lg-4">
+        <div class="contact-box">
+            <div class="pull-right">
+
+                <a id="editHospitalDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editHospitalModal">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                <a><i class="fa fa-trash-o"></i></a>
+            </div>
+            <a href="{{pathFor route='profile'}}">
+                <div class="col-sm-4">
+                    <div class="text-center">
+                        <img alt="image" class="img-circle m-t-xs img-responsive" src="img/hos.png">
+                        <div class="m-t-xs font-bold">{{ name }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <h3><strong>{{ name }}</strong></h3><span>{{ rank }}</span>
+                    <br>
+                    <address>
+                        <p><i class="fa fa-map-marker"></i> {{ address }}</p>
+                        <strong>email: </strong>{{ email }}<br>
+                        <abbr title="Phone">P:</abbr> {{ phone }}
+                    </address>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </div>
+    </div>
+
+</template>
