@@ -1,0 +1,33 @@
+<template name="editPatient">
+    <div id="updatePatientModal" class="modal fade" aria-hidden="true" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <span class="add-user-title">修改患者</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                  {{#autoForm collection="Meteor.users" doc=this id="editPatientForm" type="update"}}
+                      <fieldset>
+                        {{>afQuickField name="name"}}
+                        {{>afQuickField name="profile.patientProfile.diseases_type"}}
+                        {{>afQuickField name="mobile"}}
+                        {{>afQuickField name="age"}}
+                        {{> afQuickField name="hospital"}}
+                        {{> afQuickField name='department'}}
+
+                      </fieldset>
+                      <button type="submit" class="btn btn-primary">添加</button>
+                  {{/autoForm}}
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</template>

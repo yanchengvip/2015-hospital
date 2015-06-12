@@ -10,13 +10,16 @@
             </div>
             <div class="ibox-content profile-content">
                 <h4><strong>{{this.name}}</strong></h4>
+
                 <p><i class="fa fa-map-marker"></i> 上次治疗时间: {{this.profile.patientProfile.last_t}}</p>
                 <h5>
                     疾病类型
                 </h5>
+
                 <p>
                     {{this.profile.patientProfile.diseases_type}}
                 </p>
+
                 <div class="row m-t-lg">
                     <div class="col-md-4">
                         <span class="bar">医院</span>
@@ -34,14 +37,20 @@
                 <div class="user-button">
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i>修改</button>
+                            <button type="button" class="btn btn-primary btn-sm btn-block" id="updatePatientProfile"><i
+                                    class="fa fa-envelope"></i>修改
+                            </button>
                         </div>
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-default btn-sm btn-block" id="deletePatient"><i class="fa fa-coffee"></i>删除</button>
+                            <button type="button" class="btn btn-default btn-sm btn-block" id="deletePatient"><i
+                                    class="fa fa-coffee"></i>删除
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
+
+    {{> editPatient}}
 </template>
