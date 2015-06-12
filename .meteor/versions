@@ -72,6 +72,7 @@ mongo@1.1.0
 mongo-livedata@1.0.8
 mquandalle:jade@0.4.3
 mquandalle:jade-compiler@0.4.3
+mrt:moment@2.8.1
 msavin:mongol@1.0.60
 observe-sequence@1.0.6
 okgrow:iron-router-autoscroll@0.0.8

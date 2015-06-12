@@ -1,4 +1,4 @@
-<template name="homepagePatientForm">
+<template name="patientAdd">
     <div id="addPatientModal" class="modal fade" aria-hidden="true" >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -15,11 +15,13 @@
                         <fieldset>
                             <legend>添加患者</legend>
                             {{>afQuickField name="name"}}
+                            {{>afQuickField name="gender"}}
                             {{>afQuickField name="profile.patientProfile.diseases_type"}}
                             {{>afQuickField name="mobile"}}
                             {{>afQuickField name="age"}}
                             {{> afQuickField name="hospital"}}
                             {{> afQuickField name='department'}}
+                            {{> afQuickField name='profile.patientProfile.last_t'}}
 
                         </fieldset>
                         <button type="submit" class="btn btn-primary">添加</button>

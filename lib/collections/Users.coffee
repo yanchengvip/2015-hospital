@@ -31,7 +31,7 @@ Schema.PatientProfile = new SimpleSchema(
     optional:true
 
   last_t:
-    type:String
+    type:Date
     label:"上次治疗时间"
     optional:true
 
@@ -56,12 +56,16 @@ Schema.User = new SimpleSchema(
   age:
     type: Date
     label: '出生日期'
+  gender:
+    type:String
+    label:'性别'
   hospital:
     type: String
     label:'医院'
   department:
     type: String
     label:'科室'
+
   password:
     type: String
     label: "密码"

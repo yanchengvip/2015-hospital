@@ -17,3 +17,7 @@ AutoForm.hooks
       $('#updatePatientModal').modal 'hide'
       console.log("onSuccess")
 
+Template.homepagePatientCard.helpers
+  ageFormat:(age)->
+    moment(age).format('YYYY/DD/MM')
+
