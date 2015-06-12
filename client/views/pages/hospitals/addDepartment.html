@@ -1,5 +1,5 @@
-<template name="addHospital">
-    <div id="addHospitalModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="addHospitalModalLabel" aria-hidden="true" >
+<template name="addDepartment">
+    <div id="addDepartmentModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="addDepartmentModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-lg">
             <div class="modal-content col-lg-9">
                 <div class="modal-header text-center">
@@ -9,7 +9,7 @@
                     </button>
                 </div>
 
-                {{> quickForm collection="Hospitals" id="insertHospitalForm" type="insert" template="bootstrap3-horizontal" resetOnSuccess="true" preserveForm='false' label-class="col-sm-3" input-col-class="col-sm-8"}}
+                {{> quickForm collection="Departments" id="insertDepartmentForm" type="insert" template="bootstrap3-horizontal" resetOnSuccess="true" preserveForm='false' label-class="col-sm-3" input-col-class="col-sm-8"}}
 
             </div>
         </div>

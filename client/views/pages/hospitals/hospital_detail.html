@@ -1,0 +1,18 @@
+<template name="showHospitals">
+    <div class="col-lg-3">
+        {{> quickForm collection="Hospitals" doc=this id="updateHospitalForm" type="update"  }}
+    </div>
+    <div class="col-lg-9">
+        {{#each departments}}
+            {{> departmentItem }}
+        {{/each}}
+        <div class="col-lg-4">
+            <a id="addHospitalDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addDepartmentModal">
+                <i class="fa fa-plus fa-3x"></i>
+            </a>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    {{>addDepartment action='insert' buttonContent='添加' title="添加科室"}}
+</template>

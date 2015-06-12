@@ -1,14 +1,13 @@
-<template name="hospitalItem">
+<template name="departmentItem">
     <div class="col-lg-4">
         <div class="contact-box">
             <div class="pull-right">
-
-                <!--<a id="editHospitalDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editHospitalModal">-->
+                <!--<a id="editDepartmentDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editDepartmentModal">-->
                     <!--<i class="fa fa-pencil"></i>-->
                 <!--</a>-->
                 <a class="delete"><i class="fa fa-trash-o"></i></a>
             </div>
-            <a href="{{pathFor route='showHospitals'}}">
+            <a href="{{pathFor route='showDepartments'}}">
                 <div class="col-sm-4">
                     <div class="text-center">
                         <img alt="image" class="img-circle m-t-xs img-responsive" src="/img/hos.png">
@@ -16,11 +15,10 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <h3><strong>{{ name }}</strong></h3><span>{{ rank }}</span>
+                    <h3><strong>{{ name }}</strong></h3>
                     <br>
                     <address>
-                        <p><i class="fa fa-map-marker"></i> {{ address }}</p>
-                        <strong>email: </strong>{{ email }}<br>
+                        <strong>科室类型: </strong>{{ department_type }}<br>
                         <abbr title="Phone">P:</abbr> {{ phone }}
                     </address>
                 </div>
@@ -28,5 +26,4 @@
             </a>
         </div>
     </div>
-
 </template>

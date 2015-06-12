@@ -48,6 +48,7 @@ Schema.Hospitals = new SimpleSchema
   email:
     type: String
     label: "电子邮件"
+    regEx: SimpleSchema.RegEx.Email
     autoform:
       afFieldInput:
         type: 'email'
@@ -71,5 +72,16 @@ Schema.Hospitals = new SimpleSchema
     autoform:
       rows: 5
     optional: true
+  createdAt:
+    type: Date
+    autoValue: ->
+      if @isInsert
+        new Date
+      else if @isUpsert
+        $setOnInsert: new Date
+      else
+        @unset()
+    autoform:
+      omit: true
 
 Hospitals.attachSchema Schema.Hospitals

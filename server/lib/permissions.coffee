@@ -1,6 +1,22 @@
 Hospitals.allow
   insert:->
-      true
+    true
+  update:->
+    true
+Departments.allow
+  insert:->
+    true
+  update:->
+    true
+Meteor.methods
+  'removeHosData': (hos_id) ->
+    Hospitals.remove
+      _id: hos_id
+    return
+  'removeDepData': (dep_id) ->
+    Departments.remove
+      _id: dep_id
+    return
 Meteor.users.allow
   insert:->
     true
