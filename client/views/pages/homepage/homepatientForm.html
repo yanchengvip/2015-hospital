@@ -11,56 +11,19 @@
 
                 <div class="modal-body">
 
+                    {{#autoForm collection="Meteor.users" id="insertUserForm" type="insert"}}
+                        <fieldset>
+                            <legend>添加患者</legend>
+                            {{>afQuickField name="name"}}
+                            {{>afQuickField name="profile.patientProfile.diseases_type"}}
+                            {{>afQuickField name="mobile"}}
+                            {{>afQuickField name="age"}}
+                            {{> afQuickField name="hospital"}}
+                            {{> afQuickField name='department'}}
 
-                    <form class="form-horizontal">
-                        <div class="form-group"><label class="col-lg-2 control-label">姓名</label>
-
-                            <div class="col-lg-10"><input type="text" name="name" placeholder="姓名" class="form-control">
-                            </div>
-                        </div>
-
-                        <!--<div class="form-group"><label class="col-lg-2 control-label">密码</label>
-
-                            <div class="col-lg-10"><input type="password" name="password" placeholder="Password" class="form-control"></div>
-                        </div>-->
-
-                        <div class="form-group"><label class="col-lg-2 control-label">手机号</label>
-
-                            <div class="col-lg-10"><input type="text" name="mobile" placeholder="手机号" class="form-control">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group"><label class="col-lg-2 control-label">出生日期</label>
-
-                            <div class="col-lg-10"><input type="date" name="age" placeholder="出生日期" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group"><label class="col-lg-2 control-label">医院</label>
-
-                            <div class="col-lg-10"><input type="text" name="hospital" placeholder="医院" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group"><label class="col-lg-2 control-label">科室</label>
-
-                            <div class="col-lg-10"><input type="text" name="department" placeholder="科室" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group"><label class="col-lg-2 control-label">患病类型</label>
-
-                            <div class="col-lg-10"><input type="text" name="diseases_type" placeholder="患病类型" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <input type="submit" value="添加" class="btn btn-primary"/>
-                            </div>
-                        </div>
-                    </form>
-
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    {{/autoForm}}
                 </div>
 
 

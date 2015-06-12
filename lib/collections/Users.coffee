@@ -1,12 +1,6 @@
 # Schemas for Meteor.users collection
 # Roles: admin | doctor | patient
-#Users.allow
-#  insert:true
 
-Meteor.methods
-  userInsert:(userAttributes)->
-
-    Meteor.users.insert userAttributes
 
 
 Schema = {}
@@ -34,10 +28,12 @@ Schema.PatientProfile = new SimpleSchema(
   diseases_type:
     type:String
     label:"患病类型"
+    optional:true
 
   last_t:
     type:String
     label:"上次治疗时间"
+    optional:true
 
 )
 
@@ -48,7 +44,9 @@ Schema.User = new SimpleSchema(
     type: String
     regEx: /^[a-z0-9A-Z_@.]{1,15}$/
     label: "用户名"
-#    defaultValue: @field("mobile").value
+    autoValue:->
+      if this.isInsert
+        @field("mobile").value.toString()
   name:
     type: String
     label: "真实姓名"

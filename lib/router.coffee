@@ -12,4 +12,10 @@ Router.route "/showPatients",
   action: ->
     Router.go "/"
 
+Router.route '/profile/:_id',
+  name:'patientProfile'
+  data:->
+    Meteor.users.findOne this.params._id
+
 Router.route('/hospitals')
+

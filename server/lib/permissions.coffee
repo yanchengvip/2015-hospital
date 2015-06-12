@@ -1,3 +1,10 @@
 Hospitals.allow
   insert:->
       true
+Meteor.users.allow
+  insert:->
+    true
+  remove:->
+    true
+  update:->
+    true
