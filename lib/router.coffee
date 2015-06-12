@@ -41,3 +41,6 @@ Router.route '/departments/:_id/show',
     Meteor.subscribe 'singleDepartment', @params._id
   data:->
     Departments.findOne @params._id
+
+Router.route '/workList', name: 'workLists'
+Router.route '/submit', name: 'addWorkList'

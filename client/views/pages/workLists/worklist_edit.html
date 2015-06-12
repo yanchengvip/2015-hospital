@@ -1,0 +1,21 @@
+<template name="editWorkList">
+    <!-- Modal -->
+    {{#autoForm  id="editWorkListForm"  collection="WorkLists"
+    type="update" buttonContent="修改" }}
+        <fieldset>
+            {{> afQuickField name='pn' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='pg' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='pa' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='yyTime' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='yydp' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='yyd' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='jcbu' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='jcxm' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+        </fieldset>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="submit" class="btn btn-primary">修改</button>
+        </div>
+    {{/autoForm}}
+
+</template>

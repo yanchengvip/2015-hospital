@@ -1,0 +1,29 @@
+<template name="worklistItem">
+    <div class="col-lg-4">
+        <div class="pull-right">
+            {{#afModal  class="btn btn-primary" doc=_id title="编辑工作流" collection="WorkLists" operation="update"  buttonContent="编辑" omitFields="pID"
+            template="bootstrap3" label-class="col-sm-5" input-col-class="col-sm-7" }}
+                <i class="fa fa-pencil"></i>
+            {{/afModal}}
+            {{#afModal class="btn btn-danger" title="删除工作流" collection="WorkLists" operation="remove" doc=_id  prompt="确定删除吗?" buttonContent="删除"}}
+                <i class="fa fa-trash-o "></i>
+            {{/afModal}}
+        </div>
+        <div class="contact-box">
+            <div class="col-sm-4">
+                <p><i class="fa"></i> 患者姓名：{{pn}}</p>
+                <p><i class="fa"></i> 性别：{{pg}}</p>
+                <p><i class="fa"></i> 年龄：{{pa}}</p>
+                <p><i class="fa"></i> 预约科室：{{yydp}}</p>
+                <p><i class="fa"></i> 预约医生：{{yyd}}</p>
+            </div>
+            <div class="col-sm-8">
+                <p><i class="fa"></i> 检查部位：{{jcbw}}</p>
+                <p><i class="fa"></i> 检查项目：{{jcxm}}</p>
+                <p><i class="fa"></i> 预约时间：{{yyTime}}</p>
+                <p><i class="fa"></i> 备注：{{note}}</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</template>

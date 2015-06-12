@@ -1,0 +1,46 @@
+<template name="workLists">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            {{#each worklists}}
+                {{> worklistItem }}
+            {{/each}}
+        </div>
+        {{#afModal  class="btn btn-primary" doc=_id title="添加工作流" collection="WorkLists" operation="insert"  buttonContent="添加" omitFields="pID"
+        template="bootstrap3" label-class="col-sm-5" input-col-class="col-sm-7" }}
+            <i class="btn btn-primary fa fa-plus fa-3x"></i>
+        {{/afModal}}
+        <!--<a class="btn btn-primary fa fa-plus fa-3x" data-toggle="modal" href="#addWorkListModal">-->
+        <!--</a>-->
+    </div>
+    <!--<div class="modal fade" id="addWorkListModal" tabindex="-1" role="dialog" aria-labelledby="addWorkListModalLabel"-->
+         <!--aria-hidden="true">-->
+        <!--<div class="modal-dialog">-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span-->
+                            <!--aria-hidden="false">&times;</span></button>-->
+                    <!--<h4 class="modal-title" id="addWorkListModalLabel">添加工作流</h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!---->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="modal fade" id="editWorkListModal" tabindex="-1" role="dialog" aria-labelledby="editWorkListModalLabel"-->
+         <!--aria-hidden="true">-->
+        <!--<div class="modal-dialog">-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span-->
+                            <!--aria-hidden="false">&times;</span></button>-->
+                    <!--<h4 class="modal-title" id="editWorkListModalLabel">编辑工作流</h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!---->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    {{> autoformModals}}
+</template>
