@@ -1,8 +1,88 @@
 <template name="showDepartments">
     <div class="col-lg-3">
-        {{> quickForm collection="Departments" doc=this id="updateDepartmentForm" type="update" }}
+        <div class="pull-right">
+            {{#afModal title="修改科室" omitFields="" collection="Departments" operation="update" doc=_id
+            buttonContent="更新"
+            template="bootstrap3" label-class="col-sm-5" input-col-class="col-sm-7"
+            }}
+                <i class="fa fa-pencil-square-o margin-l-r-5"></i>
+            {{/afModal}}
+        </div>
+        <h2>科室详细信息</h2>
+        <p>科室名称:{{name}}</p><p>首字母缩写:{{spell_code}}</p><p>科室简称:{{short_name}}</p>
+        <p>联系电话:{{phone}}</p><p>科室类型:{{department_type}}</p><p>描述:{{description}}</p>
     </div>
     <div class="col-lg-9">
-        <h2>医生列表</h2>
+        <div class="col-lg-12">检查项目:<br>
+
+       {{#each 检查项目}}
+        <div class="col-lg-4">
+            <div class="contact-box">
+                <div class="pull-right">
+                    <a class="delete" id="delExaminedItem"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <!--<a href="{{pathFor route='showDepartments'}}">-->
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <!--<img alt="image" class="img-circle m-t-xs img-responsive" src="/img/hos.png">-->
+                            <div class="m-t-xs font-bold">{{ position }}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><strong>{{position  }}</strong></h3>
+                        <br>
+                        <address>
+                            <strong>费用: </strong>{{ fee }}<br>
+                            <abbr title="Phone">检查时间长度:</abbr> {{ time_length }}
+                        </address>
+                    </div>
+                    <div class="clearfix"></div>
+                <!--</a>-->
+            </div>
+        </div>
+    {{/each}}
+            <div class="col-lg-4">
+                <a id="addExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addExaminedItemModal">
+                    <i class="fa fa-plus fa-3x"></i>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-lg-12">诊室设备信息:<br>
+            {{#each 诊室设备信息}}
+                <div class="col-lg-4">
+                    <div class="contact-box">
+                        <div class="pull-right">
+                            <a class="delete" id="delModalityDevice"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                        <!--<a href="{{pathFor route='showDepartments'}}">-->
+                            <div class="col-sm-4">
+                                <div class="text-center">
+                                    <!--<img alt="image" class="img-circle m-t-xs img-responsive" src="/img/hos.png">-->
+                                    <div class="m-t-xs font-bold">{{ modality }}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <h3><strong>{{modality }}</strong></h3>
+                                <br>
+                                <address>
+                                    <strong>模式: </strong>{{ modality }}<br>
+                                    <strong>此机器每小时检查人次频率: </strong>{{ operation_frequence }}
+                                </address>
+                            </div>
+                            <div class="clearfix"></div>
+                        <!--</a>-->
+                    </div>
+                </div>
+            {{/each}}
+            <div class="col-lg-4">
+                <a id="addModalityDeviceDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addModalityDeviceModal">
+                    <i class="fa fa-plus fa-3x"></i>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        {{> addModalityDevice title="诊室设备信息" dep_id=this._id}}
+        {{> addExaminedItem title="检查项目" dep_id=this._id}}
     </div>
 </template>

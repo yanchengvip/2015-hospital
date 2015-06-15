@@ -9,8 +9,19 @@
                     </button>
                 </div>
 
-                {{> quickForm collection="Departments" id="insertDepartmentForm" type="insert" template="bootstrap3-horizontal" resetOnSuccess="true" preserveForm='false' label-class="col-sm-3" input-col-class="col-sm-8"}}
+                {{#autoForm collection="Departments" id="insertDepartmentForm" type="insert"}}
+                    <fieldset>
+                        <legend>添加科室</legend>
+                        {{>afQuickField name="name"}}
+                        {{>afQuickField name="short_name"}}
+                        {{>afQuickField name="phone"}}
+                        {{>afFieldInput name="hospital_id" value=hos_id style="display:none"}}
+                        {{>afQuickField name="department_type"}}
+                        {{>afQuickField name="description"}}
 
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">添加</button>
+                {{/autoForm}}
             </div>
         </div>
     </div>

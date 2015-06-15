@@ -1,13 +1,15 @@
 @Departments  = new Mongo.Collection "departments"
+@ModalityDevices  = new Meteor.Collection "ModalityDevices"
+@ExaminedItems  = new Meteor.Collection "ExaminedItems"
 
 Schema = {}
 Schema.ModalityDevices = new SimpleSchema
-  station_name:
-    type:String
-    label:'诊室对应名称'
-  station_aet:
-    type:String
-    label:'诊室对应主键'
+#  station_name:
+#    type:String
+#    label:'诊室对应名称'
+#  station_aet:
+#    type:String
+#    label:'诊室对应主键'
   modality:
     type:String
     label:'模式'
@@ -109,3 +111,5 @@ Schema.Departments = new SimpleSchema
       omit: true
 
 Departments.attachSchema Schema.Departments
+ModalityDevices.attachSchema Schema.ModalityDevices
+ExaminedItems.attachSchema Schema.ExaminedItems

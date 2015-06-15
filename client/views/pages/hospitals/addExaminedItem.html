@@ -1,0 +1,26 @@
+<template name="addExaminedItem">
+    <div id="addExaminedItemModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="addExaminedItemModalLabel" aria-hidden="true" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content col-lg-9">
+                <div class="modal-header text-center">
+                    <span class="add-user-title">{{title}}</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+
+                {{#autoForm collection="ExaminedItems" id="insertExaminedItemForm"}}
+                    <fieldset>
+                        <!--<legend>添加</legend>-->
+                        <input type="hidden" value="{{dep_id}}">
+                        {{>afQuickField name="position"}}
+                        {{>afQuickField name="time_length"}}
+                        {{>afQuickField name="fee"}}
+                        {{>afQuickField name="检查部位"}}
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary" id="insertEIBut">添加</button>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>
