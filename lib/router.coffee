@@ -45,3 +45,6 @@ Router.route '/departments/:_id/show',
 
 Router.route '/workList', name: 'workLists'
 Router.route '/submit', name: 'addWorkList'
+
+Router.route 'ultrasonics',
+  name:'ultrasonics'
