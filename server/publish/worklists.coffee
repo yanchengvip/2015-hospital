@@ -5,11 +5,9 @@ Meteor.publish "AllWorkLists", (dp_id) ->
   check dp_id, String
   WorkLists.find yydp: dp_id
 
-WorkLists.allow
-  insert: ->
-    true
-  remove: ->
-    true
-  update: ->
-    true
+#Meteor.methods
+#  'searchWorklists': (pMsg, startTime, endTime) ->
+#    reg = new RegExp(pMsg, 'i')
+#    return WorkLists.find({pn: reg, yyTime:{$gte:startTime,$lte:endTime}})
+
 

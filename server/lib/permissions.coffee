@@ -8,6 +8,13 @@ Departments.allow
     true
   update:->
     true
+WorkLists.allow
+  insert: ->
+    true
+  remove: ->
+    true
+  update: ->
+    true
 Meteor.methods
   'removeHosData': (hos_id) ->
     Hospitals.remove

@@ -43,7 +43,7 @@ Router.route '/departments/:_id/show',
   data:->
     Departments.findOne @params._id
 
-Router.route '/workList', name: 'workLists'
+Router.route '/worklists'
 Router.route '/submit', name: 'addWorkList'
 
 Router.route 'ultrasonics',
