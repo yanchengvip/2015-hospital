@@ -50,6 +50,22 @@ Schema.User = new SimpleSchema(
   name:
     type: String
     label: "真实姓名"
+
+#---姓名简写码
+  spell_code:
+    type: String,
+    label: ' ',
+    optional: true,
+    autoform:
+      afFieldInput:
+        type:'hidden'
+    autoValue:->
+      t = PinYin(this.field('name').value)
+      if t&&t.length>0
+        return t[0]
+      else
+        return ''
+
   mobile:
     type: Number
     label:'手机'
@@ -134,6 +150,12 @@ Schema.User = new SimpleSchema(
 
 
 Meteor.users.attachSchema Schema.User
+
+@Meteor.users.search = (query)->
+  if !query
+    return Meteor.users.find({}, {sort: {createdAt: -1}})
+  reg = new RegExp(query, 'i')
+  return  Meteor.users.find({$or:[{name: reg},{spell_code:reg},{mobile:reg}]}, {sort: {createdAt: -1}});
 
 # -----------------------------
 # 临时开的权限，用来在客户端注入假数据

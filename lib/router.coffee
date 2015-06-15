@@ -10,6 +10,7 @@ Router.route '/',
 
 Router.route "/showPatients",
   action: ->
+    Session.set('queryPatPara', '')
     Router.go "/"
 
 #查找
