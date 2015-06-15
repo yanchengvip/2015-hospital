@@ -11,7 +11,7 @@ Template.patientList.events
     queryPatPara=$(e.target).find('[name=patientListQueryPara]').val()
 #    reg = new RegExp('11', 'i')
 #    Meteor.users.find({$or:[{name: reg},{spell_code:reg}]},{fields:{name:1}})
-    console.log(queryPatPara)
+#    console.log(queryPatPara)
     Session.set('queryPatPara', queryPatPara)
 
 

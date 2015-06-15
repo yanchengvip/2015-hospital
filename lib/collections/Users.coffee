@@ -46,7 +46,7 @@ Schema.User = new SimpleSchema(
     label: "用户名"
     autoValue:->
       if this.isInsert
-        @field("mobile").value.toString()
+        @field("mobile").value
   name:
     type: String
     label: "真实姓名"
@@ -67,7 +67,7 @@ Schema.User = new SimpleSchema(
         return ''
 
   mobile:
-    type: Number
+    type: String
     label:'手机'
   age:
     type: Date
