@@ -1,0 +1,15 @@
+<template name="ultrasonics">
+    <a class="btn btn-primary" id="startReport">创建报告</a>
+    <a class="btn btn-primary" id="capture">截图</a>
+    <div class="ibox-heading">
+        视频采集
+    </div>
+    <div class="ibox-content">
+        <video autoplay class="videostream" ></video>
+        {{#each imgs}}
+            <img src="{{url}}"/>
+        {{/each}}
+    </div>
+    <canvas width="307" height="250"></canvas>
+    <device type="media"  id="video"></device>
+</template>
