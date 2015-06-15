@@ -10,12 +10,11 @@
                 </div>
 
                 <div class="modal-body">
-
                     {{#autoForm collection="Meteor.users" id="insertUserForm" type="insert"}}
                         <fieldset>
                             <legend>添加患者</legend>
                             {{>afQuickField name="name"}}
-                            {{>afQuickField name="gender"}}
+                            {{>afQuickField name="gender" options="allowed" type="select-radio-inline"}}
                             {{>afQuickField name="profile.patientProfile.diseases_type"}}
                             {{>afQuickField name="mobile"}}
                             {{>afQuickField name="age"}}

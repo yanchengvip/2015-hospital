@@ -75,6 +75,8 @@ Schema.User = new SimpleSchema(
   gender:
     type:String
     label:'性别'
+    allowedValues: ["男", "女"]
+
   hospital:
     type: String
     label:'医院'
