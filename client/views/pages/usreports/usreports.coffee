@@ -29,8 +29,13 @@ Template.usreports.onRendered ->
   , errorCallback)
   this.$('.summernote').summernote();
 Template.usreports.events
-  'click a[id=startReport]':(e,t)->
-
+  'click a[id=saveReport]':(e,t)->
+    t.$('#usReportForm').submit()
+  'submit form':(e,t)->
+    insertDoc = AutoForm.getFormValues(@id).insertDoc
+    insertDoc.us_finding = t.$('#us_finding_note').code()
+    Laniakea.Collection.USReports.insert(insertDoc)
+    AutoForm.resetForm(@id)
   'click a[id=capture]':(e,t)->
     video = t.find('video')
     canvas = t.find('canvas')
@@ -44,7 +49,6 @@ Template.usreports.events
       imgs = Template.instance().imgs.get()
       imgs.push img
       Template.instance().imgs.set(imgs)
-
   'change #video':(e,t)->
     console.log e
     console.log this.data
@@ -52,3 +56,15 @@ Template.usreports.events
 Template.usreports.helpers
   'imgs':->
     Template.instance().imgs.get()
+  'usreports':->
+    Laniakea.Collection.USReports.find()
+  'removeHTMLTag':(str)->
+#    去除HTML tag
+    str = str.replace(/<\/?[^>]*>/g,'');
+#    去除行尾空白
+    str = str.replace(/[ | ]*\n/g,'\n');
+#    去除多余空行
+    str = str.replace(/\n[\s| | ]*\r/g,'\n');
+#    去掉&nbsp;
+    str=str.replace(/&nbsp;/ig,'');
+    str;

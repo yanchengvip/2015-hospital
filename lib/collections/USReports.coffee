@@ -8,7 +8,7 @@ Schema.USReport = new SimpleSchema(
     optional:true
   patient_name:
     type:String
-    label:'患者名字'
+    label:'患者'
     optional:true
   examine_doctor_id:
     type:String

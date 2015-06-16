@@ -29,9 +29,20 @@
                         <h5>报告内容</h5>
                         <a class="btn btn-primary pull-right" id="saveReport">保存</a>
                     </div>
-                    <div class="ibox-content no-padding">
-                        <div class="summernote" id="us_finding_note">
-                        </div>
+                    <div class="ibox-content">
+                        {{# autoForm id='usReportForm' collection='Laniakea.Collection.USReports' type='insert' }}
+                            <fieldset>
+                                {{> afQuickField name='patient_name'  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
+                                {{> afQuickField name='examine_doctor_name' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
+                                {{> afQuickField name='us_finding' type='hidden'}}
+                                <div class="ibox-content no-padding">
+                                    <div class="summernote" id="us_finding_note">
+                                    </div>
+                                </div>
+                                {{> afQuickField name='us_diagnose' rows=6}}
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        {{/ autoForm }}
                     </div>
                 </div>
             </div>
@@ -44,26 +55,12 @@
                     </div>
                     <div class="ibox-content">
                         <ul class="list-group">
-                            <li class="list-group-item">
-                                <p><a class="text-info" href="#">@Alan Marry</a> I belive that. Lorem Ipsum is simply
-                                    dummy text of the printing and typesetting industry.</p>
-                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 minuts ago</small>
-                            </li>
-                            <li class="list-group-item">
-                                <p><a class="text-info" href="#">@Stock Man</a> Check this stock chart. This price is
-                                    crazy! </p>
-                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 hours ago</small>
-                            </li>
-                            <li class="list-group-item">
-                                <p><a class="text-info" href="#">@Kevin Smith</a> Lorem ipsum unknown printer took a
-                                    galley </p>
-                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>
-                            </li>
-                            <li class="list-group-item ">
-                                <p><a class="text-info" href="#">@Jonathan Febrick</a> The standard chunk of Lorem Ipsum
-                                </p>
-                                <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 hour ago</small>
-                            </li>
+                            {{#each usreports}}
+                                <li class="list-group-item">
+                                    <p><a class="text-info" href="#">{{patient_name}}</a> {{us_diagnose}}</p>
+                                    <small class="block text-muted">{{removeHTMLTag us_finding}}</small>
+                                </li>
+                            {{/each}}
                         </ul>
                     </div>
                 </div>
