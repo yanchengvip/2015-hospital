@@ -15,15 +15,14 @@
                         <fieldset>
                             {{>afQuickField name="name"}}
                             {{>afQuickField name="age"}}
-                            {{>afQuickField name="gender"}}
+                            {{>afQuickField name="gender" options="allowed" type="select-radio-inline"}}
                             {{>afQuickField name="profile.patientProfile.diseases_type"}}
                             {{>afQuickField name="mobile"}}
-
                             {{> afQuickField name="hospital"}}
                             {{> afQuickField name='department'}}
 
                         </fieldset>
-                        <button type="submit" class="btn btn-primary">添加</button>
+                        <button type="submit" class="btn btn-primary">确定</button>
                     {{/autoForm}}
 
                 </div>

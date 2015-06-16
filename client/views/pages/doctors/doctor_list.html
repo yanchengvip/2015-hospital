@@ -3,13 +3,11 @@
 
 
 
-
-
         <div class="row m-t-lg" name="doctorList">
 
             <div class="col-lg-4">
                 添加医生/护士
-                <a id="addPatientDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addDoctorModal">
+                <a id="showAddDoctorModal" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addDoctorModal">
                     <i class="fa fa-plus fa-3x"></i>
                 </a>
                 <div class="clearfix"></div>
@@ -27,5 +25,5 @@
 
         </div>
     </div>
-  {{>doctorAdd}}
+  {{>doctorAdd hos_id=hos_id dept_id=dept_id}}
 </template>

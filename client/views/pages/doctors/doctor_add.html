@@ -1,6 +1,5 @@
-
 <template name="doctorAdd">
-    <div id="addDoctorModal" class="modal fade" aria-hidden="true" >
+    <div id="addDoctorModal" class="modal fade" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -11,20 +10,25 @@
                 </div>
 
                 <div class="modal-body">
-                  {{#autoForm collection="Meteor.users" id="insertDoctorForm" type="insert"}}
-                      <fieldset>
-                          <legend>添加医生/护士</legend>
-                        {{>afQuickField name="name"}}
-                        {{>afQuickField name="gender" options="allowed" type="select-radio-inline"}}
-                        {{>afQuickField name="mobile"}}
-                        {{>afQuickField name="roles" options="allowed" type="select-checkbox-inline" noselect=true}}
-                        {{>afQuickField name="age"}}
-                        {{> afQuickField name="hospital"}}
-                        {{> afQuickField name='department'}}
+                    {{#autoForm collection="Meteor.users" id="insertDoctorForm" type="insert"}}
+                        <fieldset>
+                            <legend>添加医生/护士</legend>
+                            {{>afQuickField name="username" }}
+                            {{>afQuickField name="password" type="password"}}
+                            {{>afQuickField name="confirmPassword" type="password"}}
+                            {{>afQuickField name="name" }}
+                            {{>afQuickField name="gender" options="allowed" type="select-radio-inline"}}
+                            {{>afQuickField name="mobile"}}
+                            {{>afQuickField name="roles" options="allowed" type="select-checkbox-inline" noselect=true}}
+                            {{>afQuickField name="age"}}
+                            <!--{{> afQuickField name="hospital"}}-->
+                            <!--{{> afQuickField name='department'}}-->
+                            {{> afQuickField name="hospital_id" value=hos_id type="hidden"}}
+                            {{> afQuickField name='department_id' value=dept_id type="hidden"}}
 
-                      </fieldset>
-                      <button type="submit" class="btn btn-primary">添加</button>
-                  {{/autoForm}}
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    {{/autoForm}}
                 </div>
 
 

@@ -18,6 +18,11 @@ Router.route '/profile/:_id',
   name:'patientProfile'
   data:->
     Meteor.users.findOne this.params._id
+#显示医生
+Router.route 'doc_profile/:_id',
+  name:'doctorProfile'
+  data:->
+    Meteor.users.findOne this.params._id
 #修改
 Router.route 'profile/:_id/edit',
   name:'editPatient'

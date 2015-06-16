@@ -80,15 +80,22 @@ Schema.User = new SimpleSchema(
   hospital:
     type: String
     label:'医院'
+    optional:true
   department:
     type: String
     label:'科室'
-
+    optional:true
+  hospital_id:
+    type: String
+    label:'医院ID'
+  department_id:
+    type: String
+    label:'科室ID'
   password:
     type: String
     label: "密码"
     optional: true
-    defaultValue: "123123"
+#    defaultValue: "123123"
 
   confirmPassword:
     type: String
@@ -97,7 +104,7 @@ Schema.User = new SimpleSchema(
     custom: ->
       if @value isnt @field("password").value
         "密码不一致"
-    defaultValue: "123123"
+#    defaultValue: "123123"
 
   emails:
     type: [Object]
