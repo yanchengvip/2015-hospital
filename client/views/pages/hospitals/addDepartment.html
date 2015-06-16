@@ -9,9 +9,9 @@
                     </button>
                 </div>
 
-                {{#autoForm collection="Departments" id="insertDepartmentForm" type="insert"}}
+                {{#autoForm collection="Departments" id="insertDepartmentForm" type="insert" resetOnSuccess="true"}}
                     <fieldset>
-                        <legend>添加科室</legend>
+                        <input type="hidden" value="{{hos_id}}" >
                         {{>afQuickField name="name"}}
                         {{>afQuickField name="short_name"}}
                         {{>afQuickField name="phone"}}

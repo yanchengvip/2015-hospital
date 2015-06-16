@@ -1,19 +1,34 @@
 <template name="showHospitals">
     <div class="col-lg-3">
-        <div class="pull-right">
-        {{#afModal title="修改医院" omitFields="" collection="Hospitals" operation="update" doc=_id
-        buttonContent="更新"
-        template="bootstrap3" label-class="col-sm-5" input-col-class="col-sm-7"
-        }}
-            <i class="fa fa-pencil-square-o margin-l-r-5"></i>
-        {{/afModal}}
+        <div class="wrapper wrapper-content">
+            <div class="row animated fadeInRight">
+                <div class="col-md-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>医院详细信息</h5>
+                            <span class="pull-right">
+                                {{#afModal title="修改医院" omitFields="" collection="Hospitals" operation="update" doc=_id
+                                buttonContent="更新"
+                                template="bootstrap3" label-class="col-sm-5" input-col-class="col-sm-7"
+                                }}
+                                    <i class="fa fa-pencil-square-o margin-l-r-5"></i>
+                                {{/afModal}}
+                            </span>
+
+                        </div>
+                        <div>
+                            <div class="ibox-content profile-content">
+                                <p>医院名称:{{name}}</p>
+                                <p>首字母缩写:{{spell_code}}</p>
+                                <p>医院简称:{{short_name}}</p> <p>医院地址:{{address}}</p> <p>联系电话:{{phone}}</p>
+                                <p>医院等级:{{rank}}</p> <p>电子邮件:{{email}}</p> <p>科室数目:{{department_count}}</p><p>医生数量:{{doctor_count}}</p>
+                                描述:{{description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h2>医院详细信息</h2>
-        <p>医院名称:{{name}}</p>
-        <p>首字母缩写:{{spell_code}}</p>
-        <p>医院简称:{{short_name}}</p> <p>医院地址:{{address}}</p> <p>联系电话:{{phone}}</p>
-        <p>医院等级:{{rank}}</p> <p>电子邮件:{{email}}</p> <p>科室数目:{{department_count}}</p><p>医生数量:{{doctor_count}}</p>
-        描述:{{description}}
     </div>
     <div class="col-lg-9">
         {{#each departments}}
@@ -28,5 +43,5 @@
         </div>
     </div>
     {{> autoformModals}}
-    {{>addDepartment action='insert' buttonContent='添加' title="添加科室" hos_id=this._id}}
+    {{>addDepartment title="添加科室" hos_id=this._id}}
 </template>

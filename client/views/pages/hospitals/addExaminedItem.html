@@ -9,14 +9,14 @@
                     </button>
                 </div>
 
-                {{#autoForm collection="ExaminedItems" id="insertExaminedItemForm"}}
+                {{#autoForm collection="ExaminedItems" id="insertExaminedItemForm" resetOnSuccess="true"}}
                     <fieldset>
                         <!--<legend>添加</legend>-->
-                        <input type="hidden" value="{{dep_id}}">
+                        {{>afFieldInput name="dep_id" value=dep_id style="display:none"}}
                         {{>afQuickField name="position"}}
                         {{>afQuickField name="time_length"}}
                         {{>afQuickField name="fee"}}
-                        {{>afQuickField name="检查部位"}}
+                        {{>afQuickField name="examined_positions"}}
                     </fieldset>
                     <button type="submit" class="btn btn-primary" id="insertEIBut">添加</button>
                 {{/autoForm}}

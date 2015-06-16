@@ -4,16 +4,12 @@ AutoForm.hooks
       console.log("添加失败" + error)
     onSuccess: ->
       console.log("onSuccess" )
-#      if Departments.insert(dep)
-#        Hospitals.update( {_id: dep.hospital_id,},
-#        {$inc: {department: 1} });
+      Hospitals.update( {_id: this.insertDoc.hospital_id},{$inc: {department_count: 1}});
       $("#addDepartmentModal").modal 'hide'
     onSubmit:(doc)->
 #      this.done();
       console.log(doc.hospital_id )
       console.log("onSubmit" )
-    after: insert:(error,result)->
-      console.log(result)
 
 Template.addDepartment.helpers
   'DepartmentsFormSchema':->

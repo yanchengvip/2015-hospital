@@ -44,6 +44,18 @@ Schema.Hospitals = new SimpleSchema
     type: String
     label: "医院等级"
     optional: true
+    autoform:
+      afFieldInput:
+        firstOption:'请选择'
+      allowedValues:['三级甲等','三级乙等','二级甲等','二级乙等','一级甲等','一级乙等']
+      options:->
+        三级甲等:'三级甲等',
+        三级乙等:'三级乙等',
+        二级甲等:'二级甲等',
+        二级乙等:'二级乙等',
+        一级甲等:'一级甲等',
+        一级乙等:'一级乙等'
+
 
 #  email:
 #    type: String
@@ -60,7 +72,9 @@ Schema.Hospitals = new SimpleSchema
     autoform:
       afFieldInput:
         type:'hidden'
-    autoValue:->0
+    autoValue:->
+      if this.isInsert
+        0
     optional: true
 
   doctor_count:
@@ -69,7 +83,9 @@ Schema.Hospitals = new SimpleSchema
     autoform:
       afFieldInput:
         type:'hidden'
-    autoValue:->0
+    autoValue:->
+      if this.isInsert
+        0
     optional: true
 
   description:
