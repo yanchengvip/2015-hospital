@@ -46,5 +46,9 @@ Router.route '/departments/:_id/show',
 Router.route '/worklists'
 Router.route '/submit', name: 'addWorkList'
 
-Router.route 'ultrasonics',
-  name:'ultrasonics'
+Router.route 'usreports',
+  name:'usreports',
+  waitOn: ->
+    [
+      Meteor.subscribe 'usreports'
+    ]
