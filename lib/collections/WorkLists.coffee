@@ -30,6 +30,11 @@ Schema.workList = new SimpleSchema
   yyTime:
     type: Date
     label: "预约时间"
+    autoform:
+      afFieldInput:
+        type: "bootstrap-datepicker"
+        datePickerOptions:
+          format: "yyyy-mm-dd"
 
   yydp:
     type: String
@@ -83,3 +88,27 @@ Schema.workList = new SimpleSchema
 
 WorkLists.attachSchema Schema.workList
 
+WorkLists.search = (query)->
+  if query.pn
+    query.pn = RegExp(query.pn, 'i')
+  return  WorkLists.find(query);
+
+@SearchWLS = new Mongo.Collection null
+Schema_search = {}
+
+Schema_search.searchPara = new SimpleSchema
+  startTime:
+    type: Date
+    autoform:
+      afFieldInput:
+        type: "bootstrap-datepicker"
+        datePickerOptions:
+          format: "yyyy-mm-dd"
+  endTime:
+    type: Date
+    autoform:
+      afFieldInput:
+        type: "bootstrap-datepicker"
+        datePickerOptions:
+          format: "yyyy-mm-dd"
+SearchWLS.attachSchema Schema_search.searchPara

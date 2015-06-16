@@ -1,5 +1,16 @@
 <template name="worklists">
-    {{>searchWorklists}}
+    <div class="ibox-content">
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <input type="text" placeholder="患者信息..." name="pName" id="pName" class="form-control"></div>
+            <div class="form-group">
+                <input type="text" placeholder="起始日期..." name="startTime" id="startTime" class="form-control"></div>
+            <div class="form-group">
+                <input type="text" placeholder="结束日期..." name="endTime" id="endTime" class="form-control"></div>
+            <!--<button class="btn btn-white" type="submit">搜索</button>-->
+            <button type="text" class="btn btn-white" id="search_clear">清空</button>
+        </form>
+    </div>
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             {{#each worklists}}
@@ -24,6 +35,18 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+
+            $('#startTime').datepicker({
+                format: "yyyy-mm-dd"
+            });
+            $('#endTime').datepicker({
+                format: "yyyy-mm-dd"
+            });
+
+        });
+    </script>
     <!--<div class="modal fade" id="editWorkListModal" tabindex="-1" role="dialog" aria-labelledby="editWorkListModalLabel"-->
     <!--aria-hidden="true">-->
     <!--<div class="modal-dialog">-->
