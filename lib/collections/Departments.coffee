@@ -92,8 +92,8 @@ Schema.Departments = new SimpleSchema
   description:
     type: String
     label: "描述"
-    min: 20,
-    max: 1000,
+#    min: 20,
+#    max: 1000,
     autoform:
       rows: 5
     optional: true
