@@ -45,30 +45,38 @@ Schema.Hospitals = new SimpleSchema
     label: "医院等级"
     optional: true
 
-  email:
-    type: String
-    label: "电子邮件"
-    regEx: SimpleSchema.RegEx.Email
-    autoform:
-      afFieldInput:
-        type: 'email'
-    optional: true
+#  email:
+#    type: String
+#    label: "电子邮件"
+#    regEx: SimpleSchema.RegEx.Email
+#    autoform:
+#      afFieldInput:
+#        type: 'email'
+#    optional: true
 
   department_count:
     type: Number
-    label: "科室数目"
+    label: " "
+    autoform:
+      afFieldInput:
+        type:'hidden'
+    autoValue:->0
     optional: true
 
   doctor_count:
     type: Number
-    label: "医生数量"
+    label: " "
+    autoform:
+      afFieldInput:
+        type:'hidden'
+    autoValue:->0
     optional: true
 
   description:
     type: String
     label: "描述"
-    min: 10,
-    max: 1000,
+#    min: 10,
+#    max: 1000,
     autoform:
       rows: 5
     optional: true
