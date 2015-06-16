@@ -129,8 +129,8 @@ Schema.User = new SimpleSchema(
 # 身份：admin | doctor | patient, can ONLY be one
   roles:
     type: [ String ]
-    label: "身份（admin | doctor | patient）"
-    allowedValues: [ "admin", "doctor", "patient" ]
+    label: "身份（管理员 | 医生 |护士| 患者）"
+    allowedValues: [ "admin", "doctor","nurse", "patient" ]
     optional: true
 
   profile:
@@ -153,9 +153,9 @@ Schema.User = new SimpleSchema(
 
 Meteor.users.attachSchema Schema.User
 
-@Meteor.users.search = (query)->
+@Meteor.users.search = (role,query)->
   if !query
-    return Meteor.users.find({}, {sort: {createdAt: -1}})
+    return Meteor.users.find({roles:role}, {sort: {createdAt: -1}})
   reg = new RegExp(query, 'i')
   return  Meteor.users.find({$or:[{name: reg},{spell_code:reg},{mobile:reg}]}, {sort: {createdAt: -1}});
 

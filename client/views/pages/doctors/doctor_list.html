@@ -1,0 +1,31 @@
+<template name="doctorList">
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+
+
+
+        <div class="row m-t-lg" name="doctorList">
+
+            <div class="col-lg-4">
+                添加医生/护士
+                <a id="addPatientDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addDoctorModal">
+                    <i class="fa fa-plus fa-3x"></i>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+
+          {{#each doctorList}}
+
+              <div class="col-lg-4">
+                  <div class="contact-box" name="doctorCard">
+                    {{> doctorCard}}
+                  </div>
+              </div>
+          {{/each}}
+
+
+        </div>
+    </div>
+  {{>doctorAdd}}
+</template>

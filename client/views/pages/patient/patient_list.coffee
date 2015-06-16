@@ -3,7 +3,7 @@ Meteor.subscribe('users');
 Template.patientList.helpers
   'patientList': ->
 #    Meteor.users.find();
-    Meteor.users.search(Session.get('queryPatPara'))
+    Meteor.users.search('patient',Session.get('queryPatPara'))
 
 Template.patientList.events
   'submit form':(e)->
