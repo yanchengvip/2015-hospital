@@ -33,3 +33,4 @@ mrt:moment
 yogiben:autoform-modals
 tsega:bootstrap3-datetimepicker@=3.1.3_3
 aldeed:autoform-bs-datetimepicker
+reactive-var

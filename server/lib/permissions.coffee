@@ -31,3 +31,6 @@ Meteor.users.allow
     true
   update:->
     true
+Laniakea.Collection.USReports.allow
+  'insert':->
+    true

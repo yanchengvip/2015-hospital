@@ -1,0 +1,71 @@
+<template name="usreports">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>超声采集</h5>
+                        <a class="label label-primary pull-right" id="capture"><i class="fa fa-camera"></i></a>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <device type="media" id="video"></device>
+                        </div>
+                        <div>
+                            <video autoplay class="videostream"></video>
+                        </div>
+                        <canvas height="80" width="110" style="display: none"></canvas>
+                        <div class="lightBoxGallery">
+                            {{#each imgs}}
+                                <a title="capture{{number}}"><img src="{{url}}" style="height: 80px;width: 110px;"></a>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>报告内容</h5>
+                        <a class="btn btn-primary pull-right" id="saveReport">保存</a>
+                    </div>
+                    <div class="ibox-content">
+                        {{# autoForm id='usReportForm' collection='Laniakea.Collection.USReports' type='insert' }}
+                            <fieldset>
+                                {{> afQuickField name='patient_name'  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
+                                {{> afQuickField name='examine_doctor_name' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
+                                {{> afQuickField name='us_finding' type='hidden'}}
+                                <div class="ibox-content no-padding">
+                                    <div class="summernote" id="us_finding_note">
+                                    </div>
+                                </div>
+                                {{> afQuickField name='us_diagnose' rows=6}}
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        {{/ autoForm }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">今天</span>
+                        <span class="label label-primary pull-right">昨天</span>
+                        <h5>检查列表</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <ul class="list-group">
+                            {{#each usreports}}
+                                <li class="list-group-item">
+                                    <p><a class="text-info" href="#">{{patient_name}}</a> {{us_diagnose}}</p>
+                                    <small class="block text-muted">{{removeHTMLTag us_finding}}</small>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
