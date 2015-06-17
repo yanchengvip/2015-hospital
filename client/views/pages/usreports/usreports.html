@@ -17,7 +17,7 @@
                         <canvas height="80" width="110" style="display: none"></canvas>
                         <div class="lightBoxGallery">
                             {{#each imgs}}
-                                <a title="capture{{number}}"><img src="{{url}}" style="height: 80px;width: 110px;"></a>
+                                <a title="截图{{number}}"><img src="{{this.url store='usreportThumbs'}}" style="height: 80px;width: 110px;"></a>
                             {{/each}}
                         </div>
                     </div>
@@ -34,14 +34,16 @@
                             <fieldset>
                                 {{> afQuickField name='patient_name'  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
                                 {{> afQuickField name='examine_doctor_name' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
-                                {{> afQuickField name='us_finding' type='hidden'}}
                                 <div class="ibox-content no-padding">
-                                    <div class="summernote" id="us_finding_note">
+                                    <div class="summernote" id="report_content_note">
+                                        <h3><strong>超声所见</strong></h3>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <h3>超声所得</h3>
                                     </div>
                                 </div>
-                                {{> afQuickField name='us_diagnose' rows=6}}
                             </fieldset>
-                            <button type="submit" class="btn btn-primary">保存</button>
                         {{/ autoForm }}
                     </div>
                 </div>
@@ -57,8 +59,8 @@
                         <ul class="list-group">
                             {{#each usreports}}
                                 <li class="list-group-item">
-                                    <p><a class="text-info" href="#">{{patient_name}}</a> {{us_diagnose}}</p>
-                                    <small class="block text-muted">{{removeHTMLTag us_finding}}</small>
+                                    <p><a class="text-info" href="#">{{patient_name}}</a></p>
+                                    <small class="block text-muted">{{removeHTMLTag report_content}}</small>
                                 </li>
                             {{/each}}
                         </ul>

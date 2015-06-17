@@ -34,3 +34,8 @@ yogiben:autoform-modals
 tsega:bootstrap3-datetimepicker@=3.1.3_3
 aldeed:autoform-bs-datetimepicker
 reactive-var
+summernote:summernote
+cfs:filesystem
+cfs:graphicsmagick
+reywood:publish-composite
+
