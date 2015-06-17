@@ -39,3 +39,5 @@ cfs:filesystem
 cfs:graphicsmagick
 reywood:publish-composite
 
+zimme:select2-bootstrap3-css
+aldeed:autoform-select2

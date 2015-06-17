@@ -10,7 +10,7 @@ Template.registerHelper 'formatDate', (date) ->
 Template.worklists.helpers worklists: ->
   WorkLists.search(Session.get('queryWltPara'))
 Template.worklists.events
-  'input [type=text]':(e)->
+  'input [id=pName]':(e)->
     e.preventDefault();
     searchWlS()
   'change #startTime':(e)->
@@ -33,13 +33,10 @@ searchWlS = ->
   str = {}
   if pName
     str['pn'] = pName
-  time = {}
   if startTime
-    time['$gte'] = startTime
+    str['startTime'] = startTime
   if endTime
-    time['$lte'] = endTime
-  if startTime or endTime
-    str['yyTime'] = time
+    str['endTime'] = endTime
   Session.set('queryWltPara',str)
 
 
