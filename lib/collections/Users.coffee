@@ -34,6 +34,12 @@ Schema.PatientProfile = new SimpleSchema(
     type:Date
     label:"上次治疗时间"
     optional:true
+    autoform:
+      afFieldInput:
+        type:"bootstrap-datepicker"
+        datePickerOptions:
+          format:'yyyy-mm-dd'
+
 
 )
 
@@ -72,6 +78,11 @@ Schema.User = new SimpleSchema(
   age:
     type: Date
     label: '出生日期'
+    autoform:
+      afFieldInput:
+        type:"bootstrap-datepicker"
+        datePickerOptions:
+          format:'yyyy-mm-dd'
   gender:
     type:String
     label:'性别'
