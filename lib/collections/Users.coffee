@@ -87,9 +87,11 @@ Schema.User = new SimpleSchema(
     optional:true
   hospital_id:
     type: String
+    optional:true
     label:'医院ID'
   department_id:
     type: String
+    optional:true
     label:'科室ID'
   password:
     type: String
