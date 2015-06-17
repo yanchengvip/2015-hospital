@@ -17,7 +17,7 @@
                         <canvas height="80" width="110" style="display: none"></canvas>
                         <div class="lightBoxGallery">
                             {{#each imgs}}
-                                <a title="截图{{number}}"><img src="{{this.url store='usreportThumbs'}}" style="height: 80px;width: 110px;"></a>
+                                <a title="截图{{number}}"><img src="{{this.url store='usreportThumbs'}}"  name="captureImage" draggable="false" style="height: 80px;width: 110px;"></a>
                             {{/each}}
                         </div>
                     </div>
@@ -38,6 +38,11 @@
                                     <div class="summernote" id="report_content_note">
                                         <h3><strong>超声所见</strong></h3>
                                         <br>
+                                        图片
+                                        <br>
+                                        <div name="captureImage">
+
+                                        </div>
                                         <br>
                                         <br>
                                         <h3>超声所得</h3>
