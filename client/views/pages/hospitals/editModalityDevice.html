@@ -1,0 +1,28 @@
+<template name="editModalityDevice">
+    <div id="editModalityDeviceModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="editModalityDeviceModalLabel" aria-hidden="true" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content col-lg-9">
+                <div class="modal-header text-center">
+                    <span class="add-user-title">{{title}}</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span>
+                    </button>
+
+                </div>
+                <!--{{doc}}-->
+                <!--{{doc.modality}}-->
+                {{#autoForm collection="ModalityDevices" id="updateModalityDeviceForm" type="update" resetOnSuccess="true" doc=this.doc}}
+                    <fieldset>
+                        <!--<legend>添加</legend>-->
+                        {{>afFieldInput name="dep_id" value=doc.dep_id style="display:none"}}
+
+                        {{>afQuickField name="devices_name"}}
+                        {{>afQuickField name="modality"}}
+                        {{>afQuickField name="operation_frequence"}}
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary" id="updateMDBut">更新</button>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>
