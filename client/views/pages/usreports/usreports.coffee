@@ -27,28 +27,36 @@ Template.usreports.onRendered ->
       video.onloadedmetadata = (e)->
         console.log '初始化成功'
   , errorCallback)
-  this.$('.summernote').summernote();
+  $('.summernote').summernote({
+      lang: 'zh-CN'
+  })
+#  this.$('.summernote').summernote();
 Template.usreports.events
   'click a[id=saveReport]':(e,t)->
     t.$('#usReportForm').submit()
   'submit form':(e,t)->
     insertDoc = AutoForm.getFormValues(@id).insertDoc
-    insertDoc.us_finding = t.$('#us_finding_note').code()
+    insertDoc.report_content = t.$('#report_content_note').code()
     Laniakea.Collection.USReports.insert(insertDoc)
     AutoForm.resetForm(@id)
   'click a[id=capture]':(e,t)->
+    instance = Template.instance()
     video = t.find('video')
     canvas = t.find('canvas')
     ctx = canvas.getContext('2d')
     if stream?
       ctx.drawImage(video,0,0,110,80)
-      number+=1
-      img =
-        number: number
-        url:canvas.toDataURL('image/webp')
-      imgs = Template.instance().imgs.get()
-      imgs.push img
-      Template.instance().imgs.set(imgs)
+      dataURL = canvas.toDataURL('image/png')
+      Laniakea.Collection.USReportImages.insert dataURL,(error,fileObj)->
+        unless error
+          number+=1
+          img =
+            _id:fileObj._id
+            number:number
+          imgs = instance.imgs.get()
+          imgs.push img
+          instance.imgs.set(imgs)
+
   'change #video':(e,t)->
     console.log e
     console.log this.data
@@ -56,6 +64,8 @@ Template.usreports.events
 Template.usreports.helpers
   'imgs':->
     Template.instance().imgs.get()
+  'imgurl':(id)->
+    Laniakea.Collection.USReportImages.findOne(id)?.url()
   'usreports':->
     Laniakea.Collection.USReports.find()
   'removeHTMLTag':(str)->

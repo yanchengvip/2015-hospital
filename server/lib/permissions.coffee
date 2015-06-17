@@ -34,3 +34,12 @@ Meteor.users.allow
 Laniakea.Collection.USReports.allow
   'insert':->
     true
+Laniakea.Collection.USReportImages.allow
+  insert: (userId, doc) ->
+    true
+  update: (userId, doc, fieldNames, modifier) ->
+    true
+  download: (userId)->
+    true
+  remove: (userId, doc) ->
+    true

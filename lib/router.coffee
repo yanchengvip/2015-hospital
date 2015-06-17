@@ -56,4 +56,5 @@ Router.route 'usreports',
   waitOn: ->
     [
       Meteor.subscribe 'usreports'
+      Meteor.subscribe 'usreportImages'
     ]
