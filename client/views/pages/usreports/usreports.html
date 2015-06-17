@@ -17,7 +17,7 @@
                         <canvas height="80" width="110" style="display: none"></canvas>
                         <div class="lightBoxGallery">
                             {{#each imgs}}
-                                <a title="截图{{number}}"><img src="{{imgurl _id store='usreportThumbs'}}" style="height: 80px;width: 110px;"></a>
+                                <a title="截图{{number}}"><img src="{{this.url store='usreportThumbs'}}" style="height: 80px;width: 110px;"></a>
                             {{/each}}
                         </div>
                     </div>

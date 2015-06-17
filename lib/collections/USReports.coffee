@@ -3,7 +3,7 @@
     new FS.Store.FileSystem('usreportImages', path: '/opt/webus'),
     new FS.Store.FileSystem('usreportThumbs',
       transformWrite: (fileObj, readStream, writeStream) ->
-        gm(readStream).resize(60).stream('PNG').pipe writeStream
+        gm(readStream).resize(60).stream().pipe(writeStream)
     )
   ]
 )

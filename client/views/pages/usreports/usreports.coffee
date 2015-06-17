@@ -22,16 +22,32 @@ Template.usreports.onRendered ->
   navigator.getUserMedia(hdConstraints, (localMediaStream)->
     if localMediaStream?
       video =  me.find('video');
+      canvas = me.find('canvas');
       video.src = window.URL.createObjectURL(localMediaStream);
       stream = localMediaStream
       video.onloadedmetadata = (e)->
-        console.log '初始化成功'
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
   , errorCallback)
   $('.summernote').summernote({
       lang: 'zh-CN'
+      toolbar: [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+      ]
   })
 #  this.$('.summernote').summernote();
 Template.usreports.events
+  'summernote.change #report_content_note':(e,t,edit)->
+#    console.log this
+#    console.log e,t,edit
+  'summernote.image.upload #report_content_note':(e,t)->
+#  这个事件没反应
+#    console.log this
   'click a[id=saveReport]':(e,t)->
     t.$('#usReportForm').submit()
   'submit form':(e,t)->
@@ -45,7 +61,7 @@ Template.usreports.events
     canvas = t.find('canvas')
     ctx = canvas.getContext('2d')
     if stream?
-      ctx.drawImage(video,0,0,110,80)
+      ctx.drawImage(video,0,0)
       dataURL = canvas.toDataURL('image/png')
       Laniakea.Collection.USReportImages.insert dataURL,(error,fileObj)->
         unless error
@@ -63,7 +79,8 @@ Template.usreports.events
     t.find('video').src = this.data.url;
 Template.usreports.helpers
   'imgs':->
-    Template.instance().imgs.get()
+    Template.instance().imgs.get().map (i)->
+      Laniakea.Collection.USReportImages.findOne(i._id)
   'imgurl':(id)->
     Laniakea.Collection.USReportImages.findOne(id)?.url()
   'usreports':->
