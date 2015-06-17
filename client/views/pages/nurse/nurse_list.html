@@ -1,23 +1,23 @@
-<template name="doctorList">
+<template name="nurseList">
     <div class="wrapper wrapper-content animated fadeInRight">
 
 
 
-        <div class="row m-t-lg" name="doctorList">
+        <div class="row m-t-lg" name="nurseList">
 
             <div class="col-lg-4">
-                添加医生
-                <a id="showAddDoctorModal" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addDoctorModal">
+                添加护士
+                <a id="showAddNurseModal" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addNurseModal">
                     <i class="fa fa-plus fa-3x"></i>
                 </a>
                 <div class="clearfix"></div>
             </div>
 
-          {{#each doctorListData}}
+          {{#each nurseListData}}
 
               <div class="col-lg-4">
                   <div class="contact-box" name="doctorCard">
-                    {{> doctorCard}}
+                    {{> nurseCard}}
                   </div>
               </div>
           {{/each}}
@@ -25,5 +25,5 @@
 
         </div>
     </div>
-  {{>doctorAdd hos_id=hos_id dept_id=dept_id}}
+  {{>nurseAdd hos_id=hos_id dept_id=dept_id}}
 </template>

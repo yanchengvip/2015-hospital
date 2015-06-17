@@ -1,9 +1,9 @@
-<template name="editDoctor">
-    <div id="updateDoctorModal" class="modal fade" aria-hidden="true">
+<template name="editNurse">
+    <div id="updateNurseModal" class="modal fade" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <span class="add-user-title">修改医生</span>
+                    <span class="add-user-title">修改护士</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
                             aria-hidden="false">&times;</span>
                     </button>
@@ -11,7 +11,7 @@
 
                 <div class="modal-body">
 
-                  {{#autoForm collection="Meteor.users" doc=this id="editDoctorForm" type="update"}}
+                  {{#autoForm collection="Meteor.users" doc=this id="editNurseForm" type="update"}}
                       <fieldset>
                         {{>afQuickField name="username" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
                         {{>afQuickField name="password" type="password" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}

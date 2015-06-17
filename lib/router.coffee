@@ -18,9 +18,15 @@ Router.route '/profile/:_id',
   name:'patientProfile'
   data:->
     Meteor.users.findOne this.params._id
-#显示医生
+#查询医生
 Router.route 'doc_profile/:_id',
   name:'doctorProfile'
+  data:->
+    Meteor.users.findOne this.params._id
+
+#查询医生
+Router.route 'nurse_profile/:_id',
+  name:'nurseProfile'
   data:->
     Meteor.users.findOne this.params._id
 #修改

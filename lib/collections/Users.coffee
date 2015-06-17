@@ -17,7 +17,7 @@ Schema.DoctorProfile = new SimpleSchema(
     type: String
     label: "所在科室"
 )
-
+Schema.NurseProfile = new SimpleSchema()
 #---------------  用户上传头像 -----------------
 #@OasisPD.Collection.Images = new FS.Collection("images",
 #stores: [ new FS.Store.GridFS("images", {}) ]
@@ -167,6 +167,9 @@ Schema.User = new SimpleSchema(
 
   "profile.patientProfile":
     type: Schema.PatientProfile
+    optional: true
+  "profile.nurseProfile":
+    type: Schema.NurseProfile
     optional: true
 )
 

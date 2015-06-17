@@ -1,17 +1,16 @@
-<template name="editDoctor">
-    <div id="updateDoctorModal" class="modal fade" aria-hidden="true">
+<template name="nurseAdd">
+    <div id="addNurseModal" class="modal fade" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <span class="add-user-title">修改医生</span>
+                    <span class="add-user-title">添加护士</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
                             aria-hidden="false">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body">
-
-                  {{#autoForm collection="Meteor.users" doc=this id="editDoctorForm" type="update"}}
+                  {{#autoForm collection="Meteor.users" id="insertNurseForm" type="insert"}}
                       <fieldset>
                         {{>afQuickField name="username" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
                         {{>afQuickField name="password" type="password" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
@@ -19,13 +18,17 @@
                         {{>afQuickField name="name" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
                         {{>afQuickField name="gender" options="allowed" type="select-radio-inline" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
                         {{>afQuickField name="mobile" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
-                        <!--{{>afQuickField name="roles" options="allowed" type="select-checkbox-inline" noselect=true template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}-->
+                        {{>afQuickField name="roles" type="hidden" value="nurse"}}
                         {{>afQuickField name="age" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                          <!--{{>afQuickField name="roles" options="allowed" type="select-checkbox-inline" noselect=true template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}-->
+                          <!--{{> afQuickField name="hospital"}}-->
+                          <!--{{> afQuickField name='department'}}-->
+                        {{> afQuickField name="hospital_id" value=hos_id type="hidden" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                        {{> afQuickField name='department_id' value=dept_id type="hidden" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
 
                       </fieldset>
-                      <button type="submit" class="btn btn-primary">确定</button>
+                      <button type="submit" class="btn btn-primary">添加</button>
                   {{/autoForm}}
-
                 </div>
 
 
