@@ -33,7 +33,7 @@ Schema.ModalityDevices = new SimpleSchema
     label:'此机器每小时检查人次频率'
 
 Schema.ExaminedPositions = new SimpleSchema
-  position:
+  position_name:
     type:String
     label:'检查部位'
 

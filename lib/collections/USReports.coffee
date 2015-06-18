@@ -1,3 +1,12 @@
+@Laniakea.Collection.USReportImages = new FS.Collection('usreportImages',
+  stores: [
+    new FS.Store.FileSystem('usreportImages', path: '/dfs/webus'),
+    new FS.Store.FileSystem('usreportThumbs',
+      transformWrite: (fileObj, readStream, writeStream) ->
+        gm(readStream).resize(60).stream().pipe(writeStream)
+    )
+  ]
+)
 @Laniakea.Collection.USReports = new Mongo.Collection "usreports"
 Schema = {}
 
@@ -21,12 +30,9 @@ Schema.USReport = new SimpleSchema(
   image_list:
     type:[String]
     optional:true
-  us_finding:
+  report_content:
     type:String
-    label:'超声所见'
-  us_diagnose:
-    type:String
-    label:'超声所得'
+    label:'报告内容'
 )
 
 @Laniakea.Collection.USReports.attachSchema Schema.USReport

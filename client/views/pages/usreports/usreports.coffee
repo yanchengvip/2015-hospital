@@ -22,40 +22,71 @@ Template.usreports.onRendered ->
   navigator.getUserMedia(hdConstraints, (localMediaStream)->
     if localMediaStream?
       video =  me.find('video');
+      canvas = me.find('canvas');
       video.src = window.URL.createObjectURL(localMediaStream);
       stream = localMediaStream
       video.onloadedmetadata = (e)->
-        console.log '初始化成功'
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
   , errorCallback)
-  this.$('.summernote').summernote();
+  $('.summernote').summernote({
+      lang: 'zh-CN'
+      toolbar: [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+      ]
+  })
+#  this.$('.summernote').summernote();
 Template.usreports.events
+  'dblclick img[name=captureImage]':(e,t)->
+    dom = $("<img src="+this.url()+"/>")
+    t.$('#report_content_note').summernote('insertNode',dom[0])
+  'summernote.change #report_content_note':(e,t,edit)->
+#    console.log this
+#    console.log e,t,edit
+  'summernote.image.upload #report_content_note':(e,t)->
+#  这个事件没反应
+#    console.log this
   'click a[id=saveReport]':(e,t)->
+#  保存
     t.$('#usReportForm').submit()
   'submit form':(e,t)->
     insertDoc = AutoForm.getFormValues(@id).insertDoc
-    insertDoc.us_finding = t.$('#us_finding_note').code()
+    insertDoc.report_content = t.$('#report_content_note').code()
     Laniakea.Collection.USReports.insert(insertDoc)
     AutoForm.resetForm(@id)
   'click a[id=capture]':(e,t)->
+    instance = Template.instance()
     video = t.find('video')
     canvas = t.find('canvas')
     ctx = canvas.getContext('2d')
     if stream?
-      ctx.drawImage(video,0,0,110,80)
-      number+=1
-      img =
-        number: number
-        url:canvas.toDataURL('image/webp')
-      imgs = Template.instance().imgs.get()
-      imgs.push img
-      Template.instance().imgs.set(imgs)
+      ctx.drawImage(video,0,0)
+      dataURL = canvas.toDataURL('image/png')
+      Laniakea.Collection.USReportImages.insert dataURL,(error,fileObj)->
+        unless error
+          number+=1
+          img =
+            _id:fileObj._id
+            number:number
+          imgs = instance.imgs.get()
+          imgs.push img
+          instance.imgs.set(imgs)
+
   'change #video':(e,t)->
     console.log e
     console.log this.data
     t.find('video').src = this.data.url;
 Template.usreports.helpers
   'imgs':->
-    Template.instance().imgs.get()
+    Template.instance().imgs.get().map (i)->
+      Laniakea.Collection.USReportImages.findOne(i._id)
+  'imgurl':(id)->
+    Laniakea.Collection.USReportImages.findOne(id)?.url()
   'usreports':->
     Laniakea.Collection.USReports.find()
   'removeHTMLTag':(str)->

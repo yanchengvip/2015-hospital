@@ -1,5 +1,5 @@
 <template name="usreports">
-    <div class="wrapper wrapper-content">
+    <div class="wrapper wrapper-content animated fadeIn">
         <div class="row">
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
@@ -17,7 +17,9 @@
                         <canvas height="80" width="110" style="display: none"></canvas>
                         <div class="lightBoxGallery">
                             {{#each imgs}}
-                                <a title="capture{{number}}"><img src="{{url}}" style="height: 80px;width: 110px;"></a>
+                                <a title="截图{{number}}"><img src="{{this.url store='usreportThumbs'}}"
+                                                             name="captureImage" draggable="false"
+                                                             style="height: 80px;width: 110px;"></a>
                             {{/each}}
                         </div>
                     </div>
@@ -27,41 +29,71 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>报告内容</h5>
-                        <a class="btn btn-primary pull-right" id="saveReport">保存</a>
+                        <a class="label label-primary pull-right" id="saveReport"><i class="fa fa-floppy-o"></i></a>
                     </div>
                     <div class="ibox-content">
                         {{# autoForm id='usReportForm' collection='Laniakea.Collection.USReports' type='insert' }}
                             <fieldset>
                                 {{> afQuickField name='patient_name'  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
                                 {{> afQuickField name='examine_doctor_name' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
-                                {{> afQuickField name='us_finding' type='hidden'}}
                                 <div class="ibox-content no-padding">
-                                    <div class="summernote" id="us_finding_note">
+                                    <div class="summernote" id="report_content_note">
+                                        <h3><strong>超声所见</strong></h3>
+                                        <br>
+                                        图片
+                                        <br>
+
+                                        <div name="captureImage">
+
+                                        </div>
+                                        <br>
+                                        <br>
+
+                                        <h3>超声所得</h3>
                                     </div>
                                 </div>
-                                {{> afQuickField name='us_diagnose' rows=6}}
                             </fieldset>
-                            <button type="submit" class="btn btn-primary">保存</button>
                         {{/ autoForm }}
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-primary pull-right">今天</span>
-                        <span class="label label-primary pull-right">昨天</span>
-                        <h5>检查列表</h5>
+                <div class="panel blank-panel">
+                    <div class="panel-heading">
+                        <div class="panel-options">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-reports">报告列表</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-worklists">工作流列表</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="ibox-content">
-                        <ul class="list-group">
-                            {{#each usreports}}
-                                <li class="list-group-item">
-                                    <p><a class="text-info" href="#">{{patient_name}}</a> {{us_diagnose}}</p>
-                                    <small class="block text-muted">{{removeHTMLTag us_finding}}</small>
-                                </li>
-                            {{/each}}
-                        </ul>
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div id="tab-reports" class="tab-pane active">
+                                {{#each usreports}}
+                                    <div class="row ibox-content">
+                                        <div class="col-sm-12 m-t-sm">
+                                            <span class="m-r-sm">患者</span>{{patient_name}}
+                                            <div class="pull-right">
+                                                <a><i class="fa fa-pencil-square-o"></i></a>
+                                                <a><i class="fa fa-print"></i></a>
+                                            </div>
+                                            <br>
+                                            <span class="m-r-sm">检查医生</span>{{examine_doctor_name}}<br>
+                                            <span class="m-r-sm">报告内容</span>{{removeHTMLTag report_content}}<br>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                {{/each}}
+                            </div>
+
+                            <div id="tab-worklists" class="tab-pane">
+                                dsfdsfdsf
+                                <strong>工作流1</strong>
+                                <strong>工作流2</strong>
+                                <strong>工作流3</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

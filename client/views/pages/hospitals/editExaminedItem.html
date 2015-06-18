@@ -1,0 +1,28 @@
+<template name="editExaminedItem">
+    <div id="editExaminedItemModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="editExaminedItemModalLabel" aria-hidden="true" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content col-lg-9">
+                <div class="modal-header text-center">
+                    <span class="add-user-title">{{title}}</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span>
+                    </button>
+
+                </div>
+                <!--{{this.doc}}-->
+                {{#autoForm collection="ExaminedItems" id="updateExaminedItemForm" type="update" resetOnSuccess="true" doc=this.doc}}
+                    <fieldset>
+                        <!--<legend>添加</legend>-->
+                        {{>afFieldInput name="dep_id" value=doc.dep_id style="display:none"}}
+                        {{>afQuickField name="position"}}
+                        {{>afQuickField name="fee"}}
+                        {{>afQuickField name="time_length"}}
+                        {{>afQuickField name="examined_positions"}}
+
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary" id="updateEIBut">更新</button>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -11,6 +11,21 @@ Schema.workList = new SimpleSchema
   pn:
     type: String
     label: "患者姓名"
+    optional: true
+
+  psc:
+    type: String,
+    label: '姓名编码'
+    optional: true
+    autoform:
+      afFieldInput:
+        type:'hidden'
+    autoValue:->
+      t = PinYin(this.field('pn').value)
+      if t&&t.length>0
+        return t[0]
+      else
+        return ''
 
   pg:
     type: String
@@ -44,7 +59,7 @@ Schema.workList = new SimpleSchema
     type:  String
     label: "预约医生"
 
-  jcbu:
+  jcbw:
     type: String
     label: "检查部位"
 
@@ -89,26 +104,16 @@ Schema.workList = new SimpleSchema
 WorkLists.attachSchema Schema.workList
 
 WorkLists.search = (query)->
+  str = {}
   if query.pn
     query.pn = RegExp(query.pn, 'i')
-  return  WorkLists.find(query);
-
-@SearchWLS = new Mongo.Collection null
-Schema_search = {}
-
-Schema_search.searchPara = new SimpleSchema
-  startTime:
-    type: Date
-    autoform:
-      afFieldInput:
-        type: "bootstrap-datepicker"
-        datePickerOptions:
-          format: "yyyy-mm-dd"
-  endTime:
-    type: Date
-    autoform:
-      afFieldInput:
-        type: "bootstrap-datepicker"
-        datePickerOptions:
-          format: "yyyy-mm-dd"
-SearchWLS.attachSchema Schema_search.searchPara
+    str['$or'] = [{pn: query.pn},{psc:query.pn}]
+  time = {}
+  if query.startTime
+    time['$gte'] = query.startTime
+  if query.endTime
+    time['$lte'] = query.endTime
+  if query.startTime or query.endTime
+    str['yyTime'] = time
+  console.log str
+  return  WorkLists.find(str);
