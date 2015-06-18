@@ -1,14 +1,13 @@
 Meteor.subscribe 'WorkLists'
-Meteor.subscribe 'SearchWLS'
-
 Template.worklists.onCreated ->
   Session.set('queryWltPara', {})
 #时间格式化
 Template.registerHelper 'formatDate', (date) ->
-  moment(date).format 'YYYY-MM-DD HH:mm'
+  moment(date).format 'YYYY-MM-DD'
 
-Template.worklists.helpers worklists: ->
-  WorkLists.search(Session.get('queryWltPara'))
+Template.worklists.helpers
+  worklists: ->
+    WorkLists.search(Session.get('queryWltPara'))
 Template.worklists.events
   'input [id=pName]':(e)->
     e.preventDefault();
