@@ -1,7 +1,7 @@
 Meteor.subscribe('users')
 Template.nurseList.helpers
   'nurseListData':->
-    Meteor.users.find({roles:'nurse',department_id:this["dept_id"]})
+    Meteor.users.find({'profile.userProfile.roles':'nurse','profile.userProfile.department_id':this["dept_id"]})
 
 Template.nurseList.events
   'submit #insertNurseForm':(e)->

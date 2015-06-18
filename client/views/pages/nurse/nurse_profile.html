@@ -2,38 +2,33 @@
   {{patient}}
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>{{this.name}}护士的详细信息</h5>
+            <h5>{{this.profile.userProfile.name}}护士的详细信息</h5>
         </div>
         <div>
             <div class="ibox-content no-padding border-left-right">
                 <img alt="image" class="img-responsive" src="/img/a6.jpg">
             </div>
             <div class="ibox-content profile-content">
-                <h4><strong>{{this.name}}</strong></h4>
+                 <h4><strong>{{this.profile.userProfile.name}}</strong></h4>
+                                <p><i class="fa fa-map-marker"></i> 等级: 专家</p>
+                                <p> 出生日期: {{ageFormat this.age}}</p>
+                                <p> 性别:  {{this.profile.userProfile.gender}}</p>
+                                <p> 电话:   {{this.profile.userProfile.mobile}}</p>
 
-                <p><i class="fa fa-map-marker"></i> 等级: 护士</p>
-                <h5>
-                    专长
-                </h5>
-
-                <p>
-                    xxx
-                </p>
-
-                <div class="row m-t-lg">
-                    <div class="col-md-4">
-                        <span class="bar">医院</span>
-                        <h5>{{this.hospital}}</h5>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="line">科室</span>
-                        <h5>{{this.department}}</h5>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="bar">专业</span>
-                        <h5>xxx</h5>
-                    </div>
-                </div>
+                                <div class="row m-t-lg">
+                                    <div class="col-md-4">
+                                        <span class="bar">医院</span>
+                                        <h5>{{this.profile.userProfile.hospital}}</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span class="line">科室</span>
+                                        <h5>{{this.profile.userProfile.department}}</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span class="bar">专业</span>
+                                        <h5>xxx</h5>
+                                    </div>
+                                </div>
                 <div class="user-button">
                     <div class="row">
                         <div class="col-md-6">

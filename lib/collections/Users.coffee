@@ -12,9 +12,11 @@ Schema.AdminProfile = new SimpleSchema()
 Schema.DoctorProfile = new SimpleSchema(
   hospital:
     type: String
+    optional:true
     label:"所在医院"
   department:
     type: String
+    optional:true
     label: "所在科室"
 )
 Schema.NurseProfile = new SimpleSchema()
@@ -43,41 +45,21 @@ Schema.PatientProfile = new SimpleSchema(
 
 )
 
-
-# -----------------------  Schema for Meteor users  -----------------------------
-Schema.User = new SimpleSchema(
-  username:
-    type: String
-    regEx: /^[a-z0-9A-Z_@.]{1,15}$/
-    label: "用户名"
-    autoValue:->
-      if this.isInsert
-        @field("mobile").value
+Schema.UserProfile=new SimpleSchema({
   name:
     type: String
+    optional:true
     label: "真实姓名"
-
-#---姓名简写码
-  spell_code:
-    type: String,
-    label: ' ',
-    optional: true,
-    autoform:
-      afFieldInput:
-        type:'hidden'
-    autoValue:->
-      t = PinYin(this.field('name').value)
-      if t&&t.length>0
-        return t[0]
-      else
-        return ''
 
   mobile:
     type: String
+    optional:true
     label:'手机'
+
   age:
     type: Date
     label: '出生日期'
+    optional:true
     autoform:
       afFieldInput:
         type:"bootstrap-datepicker"
@@ -85,6 +67,7 @@ Schema.User = new SimpleSchema(
           format:'yyyy-mm-dd'
   gender:
     type:String
+    optional:true
     label:'性别'
     allowedValues: ["男", "女"]
 
@@ -92,38 +75,80 @@ Schema.User = new SimpleSchema(
     type: String
     label:'医院'
     optional:true
+
   department:
     type: String
     label:'科室'
     optional:true
+
   hospital_id:
     type: String
     optional:true
     label:'医院ID'
+
   department_id:
     type: String
     optional:true
     label:'科室ID'
+
   password:
     type: String
     label: "密码"
+    min:6
     optional: true
 #    defaultValue: "123123"
 
   confirmPassword:
     type: String
+    min:6
     label: "密码确认"
     optional: true
     custom: ->
-      if @value isnt @field("password").value
+      if @value != @field("password").value
         "密码不一致"
 #    defaultValue: "123123"
 
+# 身份：admin | doctor | patient, can ONLY be one
+  roles:
+    type: [ String ]
+    label: "身份（管理员 | 医生 |护士| 患者）"
+    allowedValues: [ "admin", "doctor","nurse", "patient" ]
+    optional: true
+
+#---姓名简写码
+#  spell_code:
+#    type: String,
+#    label: ' ',
+#    optional: true,
+#    autoform:
+#      afFieldInput:
+#        type:'hidden'
+#    autoValue:->
+#      t = PinYin(this.field('name').value)
+#      if t&&t.length>0
+#        return t[0]
+#      else
+#        return ''
+})
+
+
+# -----------------------  Schema for Meteor users  -----------------------------
+Schema.User = new SimpleSchema(
+#  username:
+#    type: String
+#    regEx: /^[a-z0-9A-Z_@.]{1,15}$/
+#    label: "用户名"
+#    autoValue:->
+#      if this.isInsert
+#        @field("mobile").value
+  username:
+    type: String
+    optional:true
+    label: "用户名"
   emails:
     type: [Object]
-
-# this must be optional if you also use other login services like facebook,
-# but if you use only accounts-password, then it can be required
+    # this must be optional if you also use other login services like facebook,
+    # but if you use only accounts-password, then it can be required
     optional: true
 
   "emails.$.address":
@@ -146,12 +171,11 @@ Schema.User = new SimpleSchema(
       omit: true
 
 
-# 身份：admin | doctor | patient, can ONLY be one
-  roles:
-    type: [ String ]
-    label: "身份（管理员 | 医生 |护士| 患者）"
-    allowedValues: [ "admin", "doctor","nurse", "patient" ]
+
+  services:
+    type: Object
     optional: true
+    blackbox: true
 
   profile:
     type: Object
@@ -168,8 +192,13 @@ Schema.User = new SimpleSchema(
   "profile.patientProfile":
     type: Schema.PatientProfile
     optional: true
+
   "profile.nurseProfile":
     type: Schema.NurseProfile
+    optional: true
+
+  "profile.userProfile":
+    type: Schema.UserProfile
     optional: true
 )
 
@@ -178,9 +207,9 @@ Meteor.users.attachSchema Schema.User
 
 @Meteor.users.search = (role,query)->
   if !query
-    return Meteor.users.find({roles:role}, {sort: {createdAt: -1}})
+    return Meteor.users.find({'profile.userProfile.roles':role}, {sort: {createdAt: -1}})
   reg = new RegExp(query, 'i')
-  return  Meteor.users.find({$or:[{name: reg},{spell_code:reg},{mobile:reg}]}, {sort: {createdAt: -1}});
+  return  Meteor.users.find({$or:[{'profile.userProfile.name': reg},{'profile.userProfile.spell_code':reg},{'profile.userProfile.mobile':reg}]}, {sort: {createdAt: -1}});
 
 # -----------------------------
 # 临时开的权限，用来在客户端注入假数据

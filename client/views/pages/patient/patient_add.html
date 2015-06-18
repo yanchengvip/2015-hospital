@@ -12,14 +12,14 @@
                 <div class="modal-body">
                     {{#autoForm collection="Meteor.users" id="insertUserForm" type="insert"}}
                         <fieldset>
-                            {{>afQuickField name="name" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
-                            {{>afQuickField name="gender" options="allowed" type="select-radio-inline" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                            {{>afQuickField name="profile.userProfile.name" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                            {{>afQuickField name="profile.userProfile.gender" options="allowed" type="select-radio-inline" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
                             {{>afQuickField name="profile.patientProfile.diseases_type" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
-                            {{>afQuickField name="mobile" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
-                            {{>afQuickField name="roles" value="patient" type="hidden"}}
-                            {{>afQuickField name="age" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
-                            {{> afQuickField name="hospital" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
-                            {{> afQuickField name='department' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                            {{>afQuickField name="profile.userProfile.mobile" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                            {{>afQuickField name="profile.userProfile.roles" value="patient" type="hidden"}}
+                            {{>afQuickField name="profile.userProfile.age" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                            {{> afQuickField name="profile.userProfile.hospital" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                            {{> afQuickField name='profile.userProfile.department' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
                             {{> afQuickField name='profile.patientProfile.last_t' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
 
                         </fieldset>
