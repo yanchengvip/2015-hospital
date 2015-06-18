@@ -1,6 +1,6 @@
 @Laniakea.Collection.USReportImages = new FS.Collection('usreportImages',
   stores: [
-    new FS.Store.FileSystem('usreportImages', path: '/opt/webus'),
+    new FS.Store.FileSystem('usreportImages', path: '/dfs/webus'),
     new FS.Store.FileSystem('usreportThumbs',
       transformWrite: (fileObj, readStream, writeStream) ->
         gm(readStream).resize(60).stream().pipe(writeStream)
