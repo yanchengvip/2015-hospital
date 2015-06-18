@@ -5,9 +5,9 @@
                 <div class="col-md-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>科室详细信息</h5>
+                            <h5><strong>科室详细信息</strong></h5>
                             <span class="pull-right">
-                                {{#afModal title="修改科室" omitFields="hospital_id,examined_items,modality_devices" collection="Departments" operation="update" doc=_id
+                                {{#afModal title="修改科室" omitFields="hospital_id,examined_items,modality_devices" collection="Departments" operation="update" doc=this._id
                                 buttonContent="更新"
                                 template="bootstrap3" label-class="col-sm-5" input-col-class="col-sm-7"
                                 }}
@@ -18,8 +18,12 @@
                         </div>
                         <div>
                             <div class="ibox-content profile-content">
-                                <p>科室名称:{{name}}</p><p>首字母缩写:{{spell_code}}</p><p>科室简称:{{short_name}}</p>
-                                <p>联系电话:{{phone}}</p><p>科室类型:{{department_type}}</p><p>描述:{{description}}</p>
+                                <p><strong>科室名称: </strong> {{name}}</p>
+                                <p><strong>首字母缩写: </strong> {{spell_code}}</p>
+                                <p><strong>科室简称: </strong> {{short_name}}</p>
+                                <p><strong>联系电话: </strong> {{phone}}</p>
+                                <p><strong>科室类型: </strong> {{department_type}}</p>
+                                <p><strong>描述: </strong><br> &nbsp;&nbsp;&nbsp; {{description}}</p>
                             </div>
                         </div>
                     </div>
@@ -34,6 +38,8 @@
         <div class="col-lg-4">
             <div class="contact-box">
                 <div class="pull-right">
+                    <a id="editExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editExaminedItemModal">
+                        <i class="fa fa-pencil-square-o margin-l-r-5"></i></a>
                     <a class="delete" id="delExaminedItem"><i class="fa fa-trash-o"></i></a>
                 </div>
                     <div class="col-sm-4">
@@ -58,6 +64,7 @@
                     <div class="clearfix"></div>
             </div>
         </div>
+           {{> editExaminedItem title="检查项目信息" dep_id=this._id doc=this}}
     {{/each}}
             <div class="col-lg-4">
                 <a id="addExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addExaminedItemModal">
@@ -71,6 +78,8 @@
                 <div class="col-lg-4">
                     <div class="contact-box">
                         <div class="pull-right">
+                            <a id="editModalityDeviceDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editModalityDeviceModal">
+                                <i class="fa fa-pencil-square-o margin-l-r-5"></i></a>
                             <a class="delete" id="delModalityDevice"><i class="fa fa-trash-o"></i></a>
                         </div>
                             <div class="col-sm-4">
@@ -91,6 +100,7 @@
                             <div class="clearfix"></div>
                     </div>
                 </div>
+                {{> editModalityDevice title="诊室设备信息" dep_id=this._id doc=this}}
             {{/each}}
             <div class="col-lg-4">
                 <a id="addModalityDeviceDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addModalityDeviceModal">
