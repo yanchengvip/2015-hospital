@@ -9,15 +9,16 @@
                     </button>
 
                 </div>
-                <!--{{this.doc}}-->
-                {{#autoForm collection="ExaminedItems" id="updateExaminedItemForm" type="update" resetOnSuccess="true" doc=this.doc}}
+                {{position}}{{fee}}{{time_length}}
+                {{#autoForm schema=editExaminedItemSchema id="updateExaminedItemForm" type="update" resetOnSuccess="true" }}
                     <fieldset>
                         <!--<legend>添加</legend>-->
-                        {{>afFieldInput name="dep_id" value=doc.dep_id style="display:none"}}
-                        {{>afQuickField name="position"}}
-                        {{>afQuickField name="fee"}}
-                        {{>afQuickField name="time_length"}}
-                        {{>afQuickField name="examined_positions"}}
+                        {{>afFieldInput name="_id" id="item_id" style="display:none"}}
+                        {{>afFieldInput name="dep_id" value=dep_id style="display:none"}}
+                        {{>afQuickField name="position" id="position_id"}}
+                        {{>afQuickField name="fee" id="fee"}}
+                        {{>afQuickField name="time_length" id="time_length_id"}}
+                        {{>afQuickField name="examined_positions" id="examined_positions_id"}}
 
                     </fieldset>
                     <button type="submit" class="btn btn-primary" id="updateEIBut">更新</button>

@@ -9,10 +9,10 @@
                     </button>
                 </div>
 
-                {{#autoForm collection="ModalityDevices" id="insertModalityDeviceForm" resetOnSuccess="true"}}
+                {{#autoForm schema=addModalityDeviceSchema id="insertModalityDeviceForm" resetOnSuccess="true"}}
                     <fieldset>
                         <!--<legend>添加</legend>-->
-                        <input type="hidden" value="{{dep_id}}" >
+                        {{>afFieldInput name="_id" value=device_id style="display:none"}}
                         {{>afFieldInput name="dep_id" value=dep_id style="display:none"}}
                         {{>afQuickField name="devices_name"}}
                         {{>afQuickField name="modality"}}

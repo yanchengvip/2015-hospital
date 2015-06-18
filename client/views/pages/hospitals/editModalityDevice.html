@@ -9,16 +9,16 @@
                     </button>
 
                 </div>
-                <!--{{doc}}-->
-                <!--{{doc.modality}}-->
-                {{#autoForm collection="ModalityDevices" id="updateModalityDeviceForm" type="update" resetOnSuccess="true" doc=this.doc}}
+
+                {{#autoForm schema=editModalityDeviceSchema id="updateModalityDeviceForm" type="update" resetOnSuccess="true" }}
                     <fieldset>
                         <!--<legend>添加</legend>-->
-                        {{>afFieldInput name="dep_id" value=doc.dep_id style="display:none"}}
+                        {{>afFieldInput name="_id" id="id_id" style="display:none"}}
+                        {{>afFieldInput name="dep_id" id="dep_id" style="display:none"}}
 
-                        {{>afQuickField name="devices_name"}}
-                        {{>afQuickField name="modality"}}
-                        {{>afQuickField name="operation_frequence"}}
+                        {{>afQuickField name="devices_name" id="devices_name_id"}}
+                        {{>afQuickField name="modality" id="modality_id"}}
+                        {{>afQuickField name="operation_frequence" id="operation_frequence_id"}}
                     </fieldset>
                     <button type="submit" class="btn btn-primary" id="updateMDBut">更新</button>
                 {{/autoForm}}
