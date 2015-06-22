@@ -52,6 +52,7 @@ Template.usreports.events
 #  这个事件没反应
 #    console.log this
   'click a[id=saveReport]':(e,t)->
+#  保存
     t.$('#usReportForm').submit()
   'submit form':(e,t)->
     insertDoc = AutoForm.getFormValues(@id).insertDoc

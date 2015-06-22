@@ -1,15 +1,9 @@
 @Departments  = new Mongo.Collection "departments"
-@ModalityDevices  = new Meteor.Collection "ModalityDevices"
-@ExaminedItems  = new Meteor.Collection "ExaminedItems"
 
-Schema = {}
+@Schema = {}
 Schema.ModalityDevices = new SimpleSchema
-#  station_name:
-#    type:String
-#    label:'诊室对应名称'
-#  station_aet:
-#    type:String
-#    label:'诊室对应主键'
+  _id:
+    type:String
   dep_id:
     type:String
 
@@ -38,6 +32,8 @@ Schema.ExaminedPositions = new SimpleSchema
     label:'检查部位'
 
 Schema.ExaminedItems = new SimpleSchema
+  _id:
+    type:String
   dep_id:
     type:String
 
@@ -51,12 +47,9 @@ Schema.ExaminedItems = new SimpleSchema
     type:Number
     label:'检查时间长度'
   examined_positions:
-    type: [Object]
+    type: [Schema.ExaminedPositions]
     optional: true
-#    label:'详细检查部位'
-  "examined_positions.$":
-    type: Schema.ExaminedPositions
-    optional: true
+    label:'详细检查部位'
 
 Schema.Departments = new SimpleSchema
 
@@ -104,20 +97,14 @@ Schema.Departments = new SimpleSchema
 
 
   modality_devices:
-    type:[Object]
+    type:[Schema.ModalityDevices]
     optional:true
-#    label:'检查设备'
-  "modality_devices.$":
-    type: Schema.ModalityDevices
-    optional: true
+    label:'检查设备'
 
   examined_items:
-    type:[Object]
+    type:[Schema.ExaminedItems]
     optional:true
-#    label:'检查项目'
-  "examined_items.$":
-    type: Schema.ExaminedItems
-    optional: true
+    label:'检查项目'
 
   description:
     type: String
@@ -141,5 +128,3 @@ Schema.Departments = new SimpleSchema
       omit: true
 
 Departments.attachSchema Schema.Departments
-ModalityDevices.attachSchema Schema.ModalityDevices
-ExaminedItems.attachSchema Schema.ExaminedItems

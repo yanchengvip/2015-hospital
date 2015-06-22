@@ -32,88 +32,10 @@
         </div>
     </div>
     <div class="col-lg-9">
-        <div class="col-lg-12">检查项目:<br>
-
-       {{#each examined_items}}
-        <div class="col-lg-4">
-            <div class="contact-box">
-                <div class="pull-right">
-                    <a id="editExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editExaminedItemModal">
-                        <i class="fa fa-pencil-square-o margin-l-r-5"></i></a>
-                    <a class="delete" id="delExaminedItem"><i class="fa fa-trash-o"></i></a>
-                </div>
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <!--<img alt="image" class="img-circle m-t-xs img-responsive" src="/img/hos.png">-->
-                            <div class="m-t-xs font-bold">{{ position }}</div>
-                            <div style="display:none">{{dep_id}}</div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <h3><strong>{{position  }}</strong></h3>
-                        <br>
-                        <address>
-                            <strong>费用: </strong>{{ fee }}<br>
-                            <abbr title="Phone">检查时间长度:</abbr> {{ time_length }}<br>
-                            <strong>详细检查部位: </strong><br>
-                            {{#each examined_positions}}
-                               <li>{{position}}</li>
-                            {{/each}}
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
-            </div>
-        </div>
-           {{> editExaminedItem title="检查项目信息" dep_id=this._id doc=this}}
-    {{/each}}
-            <div class="col-lg-4">
-                <a id="addExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addExaminedItemModal">
-                    <i class="fa fa-plus fa-3x"></i>
-                </a>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="col-lg-12">诊室设备信息:<br>
-            {{#each modality_devices}}
-                <div class="col-lg-4">
-                    <div class="contact-box">
-                        <div class="pull-right">
-                            <a id="editModalityDeviceDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editModalityDeviceModal">
-                                <i class="fa fa-pencil-square-o margin-l-r-5"></i></a>
-                            <a class="delete" id="delModalityDevice"><i class="fa fa-trash-o"></i></a>
-                        </div>
-                            <div class="col-sm-4">
-                                <div class="text-center">
-                                    <div style="display:none">{{dep_id}}</div>
-                                    <!--<img alt="image" class="img-circle m-t-xs img-responsive" src="/img/hos.png">-->
-                                    <div class="m-t-xs font-bold">{{ devices_name }}</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <h3><strong>{{devices_name }}</strong></h3>
-                                <br>
-                                <address>
-                                    <strong>模式: </strong>{{ modality }}<br>
-                                    <strong>此机器每小时检查人次频率: </strong>{{ operation_frequence }}
-                                </address>
-                            </div>
-                            <div class="clearfix"></div>
-                    </div>
-                </div>
-                {{> editModalityDevice title="诊室设备信息" dep_id=this._id doc=this}}
-            {{/each}}
-            <div class="col-lg-4">
-                <a id="addModalityDeviceDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addModalityDeviceModal">
-                    <i class="fa fa-plus fa-3x"></i>
-                </a>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        {{> addModalityDevice title="诊室设备信息" dep_id=this._id }}
-        {{> addExaminedItem title="检查项目" dep_id=this._id }}
-        {{>addDepartment title="添加科室" hos_id=this._id}}
-        <!--{{>doctorList hos_id=this.hospital_id dept_id=this._id}}-->
-        <!--{{>nurseList hos_id=this.hospital_id dept_id=this._id}}-->
+        {{>ExaminedItemList dep_id=this._id doc=this}}
+        {{>ModalityDeviceList dep_id=this._id doc=this}}
+        {{>doctorList hos_id=this.hospital_id dept_id=this._id}}
+        {{>nurseList hos_id=this.hospital_id dept_id=this._id}}
     </div>
     {{> autoformModals}}
 

@@ -1,0 +1,45 @@
+<template name="ExaminedItemList">
+    <div class="row m-t-lg">检查项目:<br>
+
+        {{#each doc.examined_items}}
+            <div class="col-lg-4">
+                <div class="contact-box">
+                    <div class="pull-right">
+                        <!--<a id="editExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editExaminedItemModal">-->
+                         <a id="editExaminedItemDiv" ><i class="fa fa-pencil-square-o margin-l-r-5"></i></a>
+                        <a class="delete" id="delExaminedItem"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <!--<img alt="image" class="img-circle m-t-xs img-responsive" src="/img/hos.png">-->
+                            <div class="m-t-xs font-bold">{{ position }}</div>
+                            <div style="display:none">{{dep_id}}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><strong>{{position  }}</strong></h3>
+                        <br>
+                        <address>
+                            <strong>费用: </strong>{{ fee }}<br>
+                            <abbr title="Phone">检查时间长度:</abbr> {{ time_length }}<br>
+                            <strong>详细检查部位: </strong><br>
+                            {{#each examined_positions}}
+                                <li>{{position_name}}</li>
+                            {{/each}}
+                        </address>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        {{/each}}
+        <div class="col-lg-4">
+            <a id="addExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addExaminedItemModal">
+                <i class="fa fa-plus fa-3x"></i>
+            </a>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    {{> addExaminedItem title="检查项目" dep_id=doc._id }}
+    {{> editExaminedItem title="检查项目信息"  doc=doc._id}}
+</template>

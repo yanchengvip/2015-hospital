@@ -1,30 +1,14 @@
-Template.addWorkList.helpers s2Opts: ->
-  [
-    {
-      label: 'Item 1'
-      value: '1'
-    }
-    {
-      label: 'Item 2'
-      value: '2'
-    }
-    {
-      label: 'Item 3'
-      value: '3'
-    }
-    {
-      label: 'Item 4'
-      value: '4'
-    }
-    {
-      label: 'Item 5'
-      value: '5'
-    }
-  ]
-
+Template.addWorkList.helpers patients: ->
+  Meteor.users.search('patient',Session.get('queryPname'))
+Template.addWorkList.onCreated ->
+  Session.set('queryPname', '***')
+Template.addWorkList.events
+  'input [name=pn]':(e)->
+    e.preventDefault();
+    pn = $('#search_pn').val()
+    Session.set('queryPname', pn)
 AutoForm.hooks
   addWorkListForm:
     onError: (operation, error)->
-      console.log error
     onSuccess:->
       $('#addWorkListModal').modal('hide');

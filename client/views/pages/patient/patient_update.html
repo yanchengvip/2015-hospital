@@ -13,13 +13,13 @@
 
                     {{#autoForm collection="Meteor.users" doc=this id="editPatientForm" type="update"}}
                         <fieldset>
-                            {{>afQuickField name="name"}}
-                            {{>afQuickField name="age"}}
-                            {{>afQuickField name="gender" options="allowed" type="select-radio-inline"}}
+                            {{>afQuickField name="profile.userProfile.name"}}
+                            {{>afQuickField name="profile.userProfile.age"}}
+                            {{>afQuickField name="profile.userProfile.gender" options="allowed" type="select-radio-inline"}}
                             {{>afQuickField name="profile.patientProfile.diseases_type"}}
-                            {{>afQuickField name="mobile"}}
-                            {{> afQuickField name="hospital"}}
-                            {{> afQuickField name='department'}}
+                            {{>afQuickField name="profile.userProfile.mobile"}}
+                            {{> afQuickField name="profile.userProfile.hospital"}}
+                            {{> afQuickField name='profile.userProfile.department'}}
 
                         </fieldset>
                         <button type="submit" class="btn btn-primary">确定</button>

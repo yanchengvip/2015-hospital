@@ -11,12 +11,15 @@
 #Template.editModalityDevice.helpers
 #  'hospital': ->
 ##    Hospitals.find()
-
+Template.editExaminedItem.helpers
+  editExaminedItemSchema:->
+    Schema.ExaminedItems
 Template.editExaminedItem.events 'click #updateEIBut':(e) ->
   e.preventDefault()
   doc = AutoForm.getFormValues('updateExaminedItemForm').insertDoc
   console.log(doc)
   console.log(this.doc)
+  console.log(this)
   dep = Departments.findOne this.doc.dep_id
   console.log(this.doc.dep_id)
   Departments.update({_id:this.doc.dep_id},{$set:{name:dep.name},$pull:{'examined_items':this.doc}})

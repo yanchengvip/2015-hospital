@@ -1,0 +1,43 @@
+<template name="ModalityDeviceList">
+
+    <div class="row m-t-lg">诊室设备信息:<br>
+
+    {{#each doc.modality_devices}}
+        <div class="col-lg-4">
+            <div class="contact-box">
+                <div class="pull-right">
+                    <!--<a id="editModalityDeviceDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editModalityDeviceModal">-->
+                    <a id="editModalityDeviceDiv">
+                        <i class="fa fa-pencil-square-o margin-l-r-5"></i></a>
+                    <a class="delete" id="delModalityDevice"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="col-sm-4">
+                    <div class="text-center">
+                        <div style="display:none">{{dep_id}}</div>
+                        <!--<img alt="image" class="img-circle m-t-xs img-responsive" src="/img/hos.png">-->
+                        <div class="m-t-xs font-bold">{{ devices_name }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <h3><strong>{{devices_name }}</strong></h3>
+                    <br>
+                    <address>
+                        <strong>模式: </strong>{{ modality }}<br>
+                        <strong>此机器每小时检查人次频率: </strong>{{ operation_frequence }}
+                    </address>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div id="editModal"></div>
+    {{/each}}
+    <div class="col-lg-4">
+        <a id="addModalityDeviceDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addModalityDeviceModal">
+            <i class="fa fa-plus fa-3x"></i>
+        </a>
+        <div class="clearfix"></div>
+    </div>
+</div>
+    {{> editModalityDevice title="诊室设备信息" dep_id=doc._id}}
+{{> addModalityDevice title="诊室设备信息" dep_id=doc._id }}
+</template>

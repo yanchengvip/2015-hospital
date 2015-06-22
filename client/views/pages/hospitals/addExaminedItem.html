@@ -9,9 +9,10 @@
                     </button>
                 </div>
 
-                {{#autoForm collection="ExaminedItems" id="insertExaminedItemForm" resetOnSuccess="true"}}
+                {{#autoForm schema=addExaminedItemSchema id="insertExaminedItemForm" resetOnSuccess="true"}}
                     <fieldset>
                         <!--<legend>添加</legend>-->
+                        {{>afFieldInput name="_id" value=item_id style="display:none"}}
                         {{>afFieldInput name="dep_id" value=dep_id style="display:none"}}
                         {{>afQuickField name="position"}}
                         {{>afQuickField name="time_length"}}

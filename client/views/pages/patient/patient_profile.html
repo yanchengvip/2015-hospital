@@ -2,14 +2,14 @@
     {{patient}}
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>{{this.name}}的详细信息</h5>
+            <h5>{{this.profile.userProfile.name}}的详细信息</h5>
         </div>
         <div>
             <div class="ibox-content no-padding border-left-right">
                 <img alt="image" class="img-responsive" src="/img/a6.jpg">
             </div>
             <div class="ibox-content profile-content">
-                <h4><strong>{{this.name}}</strong></h4>
+                <h4><strong>{{this.profile.userProfile.name}}</strong></h4>
 
                 <p><i class="fa fa-map-marker"></i> 上次治疗时间: {{ ageFormat this.profile.patientProfile.last_t}}</p>
                 <h5>
@@ -23,11 +23,11 @@
                 <div class="row m-t-lg">
                     <div class="col-md-4">
                         <span class="bar">医院</span>
-                        <h5>{{this.hospital}}</h5>
+                        <h5>{{this.profile.userProfile.hospital}}</h5>
                     </div>
                     <div class="col-md-4">
                         <span class="line">科室</span>
-                        <h5>{{this.department}}</h5>
+                        <h5>{{this.profile.userProfile.department}}</h5>
                     </div>
                     <div class="col-md-4">
                         <span class="bar">主治医生</span>

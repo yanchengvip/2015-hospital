@@ -7,6 +7,9 @@ Router.configure
 #
 Router.route '/',
   name:'homepageMain'
+#Router.route '/',
+#  name:'login'
+#  layoutTemplate:'blankLayout'
 
 Router.route "/showPatients",
   action: ->
@@ -18,15 +21,9 @@ Router.route '/profile/:_id',
   name:'patientProfile'
   data:->
     Meteor.users.findOne this.params._id
-#查询医生
+#显示医生
 Router.route 'doc_profile/:_id',
   name:'doctorProfile'
-  data:->
-    Meteor.users.findOne this.params._id
-
-#查询医生
-Router.route 'nurse_profile/:_id',
-  name:'nurseProfile'
   data:->
     Meteor.users.findOne this.params._id
 #修改
@@ -34,6 +31,13 @@ Router.route 'profile/:_id/edit',
   name:'editPatient'
   data:->
     Meteor.findOne this.params._id
+
+#显示护士
+Router.route 'nurseProfile/:_id',
+  name:'nurseProfile'
+  data:->
+    Meteor.users.findOne this.params._id
+
 
 Router.route('/hospitals')
 
@@ -61,6 +65,7 @@ Router.route 'usreports',
   name:'usreports',
   waitOn: ->
     [
+      Meteor.subscribe 'WorkLists'
       Meteor.subscribe 'usreports'
       Meteor.subscribe 'usreportImages'
     ]

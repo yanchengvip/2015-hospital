@@ -3,7 +3,14 @@
     {{#autoForm  id="addWorkListForm"  collection="WorkLists"
     type="insert" buttonContent="添加"}}
         <fieldset>
-            {{> afQuickField name='pn' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" type="select2" select2Options=s2Opts}}
+            {{> afQuickField name='pn' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" id='search_pn'}}
+            <table class="table table-hover no-margins">
+                <tbody>
+                    {{#each patients}}
+                        {{>patient_item}}
+                    {{/each}}
+                </tbody>
+            </table>
             {{> afQuickField name='pg' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
             {{> afQuickField name='pa' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
             {{> afQuickField name='yyTime' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
