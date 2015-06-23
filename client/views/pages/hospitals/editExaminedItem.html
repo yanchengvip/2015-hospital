@@ -9,15 +9,15 @@
                     </button>
 
                 </div>
-                {{position}}{{fee}}{{time_length}}
-                {{#autoForm schema=editExaminedItemSchema id="updateExaminedItemForm" type="update" resetOnSuccess="true" }}
+                {{#autoForm schema=editExaminedItemSchema id="updateExaminedItemForm" type="update" resetOnSuccess="true" doc=this}}
                     <fieldset>
                         <!--<legend>添加</legend>-->
-                        {{>afFieldInput name="_id" id="item_id" style="display:none"}}
+                        {{>afFieldInput name="_id" id="item_id"}}
                         {{>afFieldInput name="dep_id" value=dep_id style="display:none"}}
                         {{>afQuickField name="position" id="position_id"}}
-                        {{>afQuickField name="fee" id="fee"}}
+                        {{>afQuickField name="fee" id="fee_id"}}
                         {{>afQuickField name="time_length" id="time_length_id"}}
+                        <!--详细检查部位：{{>afFieldInput name="examined_positions" id="examined_positions_id"}}-->
                         {{>afQuickField name="examined_positions" id="examined_positions_id"}}
 
                     </fieldset>

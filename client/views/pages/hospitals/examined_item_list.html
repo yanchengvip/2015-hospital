@@ -6,6 +6,7 @@
                 <div class="contact-box">
                     <div class="pull-right">
                         <!--<a id="editExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#editExaminedItemModal">-->
+                        <!--<a id="editExaminedItemDiv2" href="{{pathFor route='editExaminedItem'}}" ><i class="fa fa-pencil-square-o margin-l-r-5"></i></a>-->
                          <a id="editExaminedItemDiv" ><i class="fa fa-pencil-square-o margin-l-r-5"></i></a>
                         <a class="delete" id="delExaminedItem"><i class="fa fa-trash-o"></i></a>
                     </div>
@@ -31,6 +32,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
+            <!--{{> editExaminedItem title="检查项目信息"  dep_id=dep_id item_id = _id doc=this }}-->
         {{/each}}
         <div class="col-lg-4">
             <a id="addExaminedItemDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#addExaminedItemModal">
@@ -41,5 +43,5 @@
     </div>
 
     {{> addExaminedItem title="检查项目" dep_id=doc._id }}
-    {{> editExaminedItem title="检查项目信息"  doc=doc._id}}
+    {{> editExaminedItem title="检查项目信息"  dep_id=doc._id}}
 </template>
