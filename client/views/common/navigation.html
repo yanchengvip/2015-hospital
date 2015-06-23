@@ -13,7 +13,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <!--<span class="block m-t-xs"> <strong class="font-bold">{{currentUser.profile.userProfile.name}}</strong></span> -->
-                                <span class="text-muted text-xs block">{{currentUser.profile.userProfile.name}} <b class="caret"></b></span> </span>
+                                <h2 class="text-muted text-xs block">{{currentUser.profile.userProfile.name}} <b class="caret"></b></h2> </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="{{pathFor route='my_profile'}}">个人资料</a></li>
@@ -26,19 +26,19 @@
                     </div>
                 </li>
                 <li class="">
-                    <a href="{{pathFor route='showPatients'}}"><i class="fa fa-diamond"></i> <span
+                    <a href="{{pathFor route='showPatients'}}"><i class="fa fa-users"></i> <span
                             class="nav-label">患者列表</span> </a>
                 </li>
                 <li class="">
-                    <a href="{{pathFor route='hospitals'}}"><i class="fa fa-diamond"></i> <span
+                    <a href="{{pathFor route='hospitals'}}"><i class="fa fa-hospital-o"></i> <span
                             class="nav-label">医院管理</span> </a>
                 </li>
                 <li class="">
-                    <a href="{{pathFor route='worklists'}}"><i class="fa fa-diamond"></i> <span
+                    <a href="{{pathFor route='worklists'}}"><i class="fa fa-file-text-o"></i> <span
                             class="nav-label">工作流列表</span> </a>
                 </li>
                 <li class="">
-                    <a href="{{pathFor route='usreports'}}"><i class="fa fa-diamond"></i> <span
+                    <a href="{{pathFor route='usreports'}}"><i class="fa fa-medkit"></i> <span
                             class="nav-label">超声采集</span> </a>
                 </li>
             </ul>
