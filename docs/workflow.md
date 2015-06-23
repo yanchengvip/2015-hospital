@@ -66,3 +66,9 @@
 ##  医生护士工作流
 
 ![](img/yishengdayin.jpg)
+
+##  患者微信关注工作流
+
+![](img/quan.jpg)
+
+
