@@ -2,6 +2,9 @@
 Template.registerHelper 'ageFormat',(age)->
    moment(age).format('YYYY/MM/DD')
 
+Template.registerHelper 'currentUser',->
+   Meteor.user()
+
 
 
 
