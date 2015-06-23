@@ -7,9 +7,28 @@ Router.configure
 #
 Router.route '/',
   name:'homepageMain'
-#Router.route '/',
-#  name:'login'
-#  layoutTemplate:'blankLayout'
+
+#判断是否登录
+isLogin = ->
+  if !Meteor.userId()
+    Session.set 'username', ''
+    @layout 'blankLayout'
+    @render 'login'
+  else
+    @next()
+
+#  登录调用
+Router.onBeforeAction isLogin,
+  except:[
+    'login'
+  ]
+#退出
+Router.route '/logout',
+  action: ->
+    Meteor.logout (err) ->
+      unless err
+        Router.go '/'
+
 
 Router.route "/showPatients",
   action: ->
@@ -38,6 +57,17 @@ Router.route 'nurseProfile/:_id',
   data:->
     Meteor.users.findOne this.params._id
 
+Router.route '/my_profile',
+  action:->
+    console.log 2222
+    console.log Meteor.user()
+    currentUser=Meteor.user()
+    if currentUser.profile.userProfile.roles[0]=='doctor'
+      Router.go '/doc_profile/'+currentUser._id
+    else if currentUser.profile.userProfile.roles[0]=='nurse'
+      Router.go '/nurseProfile/'+currentUser._id
+    else
+      false
 
 Router.route('/hospitals')
 
