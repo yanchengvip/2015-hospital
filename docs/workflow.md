@@ -57,4 +57,12 @@
 	
 	
 	
-	！！
+## 护士添加患者
+
+![](img/hushitianjia.jpg)
+
+
+
+##  医生护士工作流
+
+![](img/yishengdayin.jpg)
