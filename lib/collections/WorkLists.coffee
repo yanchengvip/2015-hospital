@@ -68,11 +68,14 @@ Schema.workList = new SimpleSchema
     label: "检查项目"
 
   state:
-    type: Number
+    type: String
     label: '状态'
     autoValue: ->
       if this.isInsert
-        0
+        '患者预约'
+      if this.isUpdate
+        if this.field('jcxm').value != ''
+          '预约确认'
     autoform:
       omit: true
 
@@ -115,5 +118,5 @@ WorkLists.search = (query)->
     time['$lte'] = query.endTime
   if query.startTime or query.endTime
     str['yyTime'] = time
-  console.log str
+  str['state'] = '预约确认'
   return  WorkLists.find(str);

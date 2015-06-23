@@ -1,0 +1,66 @@
+<template name="worklists_l">
+    <div class="ibox-content">
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <input type="text" placeholder="患者信息..." name="pName" id="pName" class="form-control"></div>
+            <div class="form-group">
+                <input type="text" placeholder="起始日期..." name="startTime" id="startTime" class="form-control"></div>
+            <div class="form-group">
+                <input type="text" placeholder="结束日期..." name="endTime" id="endTime" class="form-control"></div>
+            <!--<button class="btn btn-white" type="submit">搜索</button>-->
+            <button type="text" class="btn btn-white" id="search_clear">清空</button>
+        </form>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            {{#each worklists_qr}}
+                {{> worklistItem }}
+            {{/each}}
+            <a class="btn btn-primary fa fa-plus fa-3x" data-toggle="modal" href="#addWorkListModal">
+            </a>
+        </div>
+    </div>
+    <div class="modal fade" id="addWorkListModal" tabindex="-1" role="dialog" aria-labelledby="addWorkListModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span></button>
+                    <h4 class="modal-title" id="addWorkListModalLabel">添加工作流</h4>
+                </div>
+                <div class="modal-body">
+                    {{>addWorkList}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            $('#startTime').datepicker({
+                format: "yyyy-mm-dd"
+            });
+            $('#endTime').datepicker({
+                format: "yyyy-mm-dd"
+            });
+
+        });
+    </script>
+    <!--<div class="modal fade" id="editWorkListModal" tabindex="-1" role="dialog" aria-labelledby="editWorkListModalLabel"-->
+    <!--aria-hidden="true">-->
+    <!--<div class="modal-dialog">-->
+    <!--<div class="modal-content">-->
+    <!--<div class="modal-header">-->
+    <!--<button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span-->
+    <!--aria-hidden="false">&times;</span></button>-->
+    <!--<h4 class="modal-title" id="editWorkListModalLabel">编辑工作流</h4>-->
+    <!--</div>-->
+    <!--<div class="modal-body">-->
+    <!---->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    {{> autoformModals}}
+</template>

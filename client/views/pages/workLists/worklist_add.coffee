@@ -1,7 +1,7 @@
 Template.addWorkList.helpers patients: ->
-  Meteor.users.search('patient',Session.get('queryPname'))
-Template.addWorkList.onCreated ->
-  Session.set('queryPname', '***')
+  Meteor.users.find()
+#Template.addWorkList.onCreated ->
+#  Session.set('queryPname', '***')
 Template.addWorkList.events
   'input [name=pn]':(e)->
     e.preventDefault();
