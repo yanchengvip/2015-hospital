@@ -43,7 +43,7 @@ Template.usreports.onRendered ->
 #  this.$('.summernote').summernote();
 Template.usreports.events
   'dblclick img[name=captureImage]':(e,t)->
-    dom = $("<img src="+this.url()+"/>")
+    dom = $("<img src="+this.url()+">")
     t.$('#report_content_note').summernote('insertNode',dom[0])
   'summernote.change #report_content_note':(e,t,edit)->
 #    console.log this
