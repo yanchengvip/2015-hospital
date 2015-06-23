@@ -1,10 +1,10 @@
-Meteor.publishComposite  'usreports',->
+Meteor.publishComposite  'usReports',->
   find: ->
-    Laniakea.Collection.USReports.find()
+    Laniakea.Collection.UsReports.find()
   children: [
     find:(usReports)->
 
   ]
-Meteor.publishComposite  'usreportImages',->
+Meteor.publishComposite  'usReportImages',->
   find: ->
-    Laniakea.Collection.USReportImages.find()
+    Laniakea.Collection.UsReportImages.find()

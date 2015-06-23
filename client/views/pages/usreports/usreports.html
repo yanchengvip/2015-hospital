@@ -17,7 +17,7 @@
                         <canvas height="80" width="110" style="display: none"></canvas>
                         <div class="lightBoxGallery">
                             {{#each imgs}}
-                                <a title="截图{{number}}"><img src="{{this.url store='usreportThumbs'}}"
+                                <a title="截图{{number}}"><img src="{{this.url store='usReportThumbs'}}"
                                                              name="captureImage" draggable="false"
                                                              style="height: 80px;width: 110px;"></a>
                             {{/each}}
@@ -32,10 +32,10 @@
                         <a class="label label-primary pull-right" id="saveReport"><i class="fa fa-floppy-o"></i></a>
                     </div>
                     <div class="ibox-content">
-                        {{# autoForm id='usReportForm' collection='Laniakea.Collection.USReports' type='insert' }}
+                        {{# autoForm id='usReportForm' collection='Laniakea.Collection.UsReports' type='insert' }}
                             <fieldset>
-                                {{> afQuickField name='patient_name'  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
-                                {{> afQuickField name='examine_doctor_name' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
+                                {{> afQuickField name='pn'  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
+                                {{> afQuickField name='edocn' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-8 row"}}
                                 <div class="ibox-content no-padding">
                                     <div class="summernote" id="report_content_note">
                                         <h3><strong>超声所见</strong></h3>
@@ -73,14 +73,14 @@
                                 {{#each usreports}}
                                     <div class="row ibox-content">
                                         <div class="col-sm-12 m-t-sm">
-                                            <span class="m-r-sm">患者</span>{{patient_name}}
+                                            <span class="m-r-sm">患者</span>{{pn}}
                                             <div class="pull-right">
                                                 <a><i class="fa fa-pencil-square-o"></i></a>
                                                 <a><i class="fa fa-print"></i></a>
                                             </div>
                                             <br>
-                                            <span class="m-r-sm">检查医生</span>{{examine_doctor_name}}<br>
-                                            <span class="m-r-sm">报告内容</span>{{removeHTMLTag report_content}}<br>
+                                            <span class="m-r-sm">检查医生</span>{{edocn}}<br>
+                                            <span class="m-r-sm">报告内容</span>{{removeHTMLTag usfind}}<br>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>

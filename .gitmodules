@@ -1,3 +1,6 @@
 [submodule "packages/pinyin"]
 	path = packages/pinyin
 	url = git@fitark.org:atmosphere/pinyin.git
+[submodule "lib/schema"]
+	path = lib/schema
+	url = git@fitark.org:Laniakea/schema.git
