@@ -1,0 +1,45 @@
+<template name="home">
+<div id="skrollr-body">
+    {{> dicom_bg1}}
+    <section id="one_box" class="colored text-center skrollr_box">
+        <header>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <a class="navbar-brand line_height" href="#">超声工作站</a>
+                    <div id="main-nav" class="nav navbar-nav navbar-right">
+                        <ul class="social-links">
+                                <a href="#" target="_blank"><li class="fa fa-github"></li></a>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="intro-well wow animated bounceIn">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <h1>MedImaging Cloud</h1>
+                        <h2 class="hidden-xs">Picture Archiving and Communication Systems</h2>
+                        {{#if currentUser}}
+                        <a href="/homepageMain" class="btn btn-primary">查看主页</a>
+                        {{else}}
+                        <a class="btn btn-primary btn-lg Account Details" href="/login">登&nbsp;&nbsp;录</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+</template>
+<template name="dicom_bg1">
+<div
+    id="bg1-background-intro"
+    class="parallax-image-wrapper parallax-image-wrapper-100"
+    data-anchor-target="#one_box"
+    data-bottom-top="transform:translate3d(0px, 200%, 0px)"
+    data-top-bottom="transform:translate3d(0px, 0%, 0px)">
+
+</div>
+</template>

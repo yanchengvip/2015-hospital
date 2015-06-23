@@ -5,6 +5,7 @@ Router.configure
 #
 # Example pages routes
 #
+#登录后首页
 Router.route '/',
   name:'homepageMain'
 
@@ -12,16 +13,28 @@ Router.route '/',
 isLogin = ->
   if !Meteor.userId()
     Session.set 'username', ''
-    @layout 'blankLayout'
-    @render 'login'
+    @layout 'homeLayout'
+    @render 'home'
   else
     @next()
 
-#  登录调用
+#  登录之前调用
 Router.onBeforeAction isLogin,
   except:[
-    'login'
+    'login','home'
   ]
+
+##登录
+Router.route '/login',
+  layoutTemplate:'blankLayout'
+  name:'login'
+  action: ->
+    if !Meteor.userId()
+      @layout 'blankLayout'
+      @render 'login'
+    else
+      Router.go "/"
+
 #退出
 Router.route '/logout',
   action: ->
@@ -33,7 +46,7 @@ Router.route '/logout',
 Router.route "/showPatients",
   action: ->
     Session.set('queryPatPara', '')
-    Router.go "/"
+    Router.go "/homepageMain"
 
 #查找
 Router.route '/profile/:_id',
