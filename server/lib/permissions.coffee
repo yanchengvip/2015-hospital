@@ -31,10 +31,10 @@ Meteor.users.allow
     true
   update:->
     true
-Laniakea.Collection.USReports.allow
+Laniakea.Collection.UsReports.allow
   'insert':->
     true
-Laniakea.Collection.USReportImages.allow
+Laniakea.Collection.UsReportImages.allow
   insert: (userId, doc) ->
     true
   update: (userId, doc, fieldNames, modifier) ->

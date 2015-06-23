@@ -66,6 +66,6 @@ Router.route 'usreports',
   waitOn: ->
     [
       Meteor.subscribe 'WorkLists'
-      Meteor.subscribe 'usreports'
-      Meteor.subscribe 'usreportImages'
+      Meteor.subscribe 'usReports'
+      Meteor.subscribe 'usReportImages'
     ]

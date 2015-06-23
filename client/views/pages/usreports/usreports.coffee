@@ -56,8 +56,13 @@ Template.usreports.events
     t.$('#usReportForm').submit()
   'submit form':(e,t)->
     insertDoc = AutoForm.getFormValues(@id).insertDoc
-    insertDoc.report_content = t.$('#report_content_note').code()
-    Laniakea.Collection.USReports.insert(insertDoc)
+    insertDoc.usfind = t.$('#report_content_note').code()
+    try
+      check(insertDoc,Laniakea.Schema.UsReport)
+    catch e
+      toastr.error(e.message)
+      return
+    Laniakea.Collection.UsReports.insert(insertDoc)
     AutoForm.resetForm(@id)
   'click a[id=capture]':(e,t)->
     instance = Template.instance()
@@ -67,7 +72,7 @@ Template.usreports.events
     if stream?
       ctx.drawImage(video,0,0)
       dataURL = canvas.toDataURL('image/png')
-      Laniakea.Collection.USReportImages.insert dataURL,(error,fileObj)->
+      Laniakea.Collection.UsReportImages.insert dataURL,(error,fileObj)->
         unless error
           number+=1
           img =
@@ -84,11 +89,11 @@ Template.usreports.events
 Template.usreports.helpers
   'imgs':->
     Template.instance().imgs.get().map (i)->
-      Laniakea.Collection.USReportImages.findOne(i._id)
+      Laniakea.Collection.UsReportImages.findOne(i._id)
   'imgurl':(id)->
-    Laniakea.Collection.USReportImages.findOne(id)?.url()
+    Laniakea.Collection.UsReportImages.findOne(id)?.url()
   'usreports':->
-    Laniakea.Collection.USReports.find()
+    Laniakea.Collection.UsReports.find()
   'removeHTMLTag':(str)->
 #    去除HTML tag
     str = str.replace(/<\/?[^>]*>/g,'');
