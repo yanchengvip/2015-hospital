@@ -46,7 +46,7 @@ Router.route '/logout',
 Router.route "/showPatients",
   action: ->
     Session.set('queryPatPara', '')
-    Router.go "/homepageMain"
+    Router.go "/"
 
 #查找
 Router.route '/profile/:_id',

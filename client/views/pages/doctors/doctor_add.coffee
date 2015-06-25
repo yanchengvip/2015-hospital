@@ -17,10 +17,12 @@ AutoForm.hooks
             age:user.age
             gender:user.gender
             mobile:user.mobile
+
+          }
+          doctorProfile:{
             hospital_id:user.hospital_id
             department_id:user.department_id
           }
-
       }
       Accounts.createUser(newUserData)
       $("#addDoctorModal").modal 'hide'
